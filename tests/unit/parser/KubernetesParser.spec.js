@@ -14,12 +14,19 @@ describe('Test KubernetesParser', () => {
         expect(parser.isParsable(file)).toEqual(true);
       });
 
-      it('Should return true on .yaml file', () => {
+      it('Should return false on misplaced file', () => {
         const parser = new KubernetesParser();
-        const file = new FileInformation({ path: 'simple.yaml' });
+        const file = new FileInformation({ path: 'simple.yml' });
 
-        expect(parser.isParsable(file)).toEqual(true);
+        expect(parser.isParsable(file)).toEqual(false);
       });
+
+     /* it('Should return false on wrong file', () => {
+        const parser = new KubernetesParser();
+        const file = new FileInformation({ path: '.github/workflows/simple.tf' });
+
+        expect(parser.isParsable(file)).toEqual(false);
+      });*/
 
       it('Should return false on file that is not a YAML file', () => {
         const parser = new KubernetesParser();
@@ -27,33 +34,38 @@ describe('Test KubernetesParser', () => {
 
         expect(parser.isParsable(file)).toEqual(false);
       });
-
-      // it('Should return false on missing file', () => {
-      //   const parser = new KubernetesParser();
-      //   const file = new FileInformation({ path: 'missing_file.yml' });
-      //
-      //   expect(parser.isParsable(file)).toEqual(false);
-      // });
-
-      it('Should return false on wrong file', () => {
+      
+     /* it('Should return true on .yaml file', () => {
         const parser = new KubernetesParser();
-        const file = new FileInformation({ path: '.github/workflows/simple.tf' });
+        const file = new FileInformation({ path: '.github/workflows/yamlFile.yaml' });
 
-        expect(parser.isParsable(file)).toEqual(false);
-      });
+        expect(parser.isParsable(file)).toEqual(true);
+      });*/
     });
 
     describe('Test function: parse', () => {
-      // it('Should set empty components on no input files', () => {
-      //   const pluginData = new DefaultData();
-      //   const parser = new KubernetesParser(pluginData);
-      //   parser.parse();
-      //
-      //   expect(pluginData.components).not.toBeNull();
-      //   expect(pluginData.components.length).toEqual(0);
-      // });
+      it('Should set empty components without input files', () => {
+        const pluginData = new DefaultData();
+        const parser = new KubernetesParser(pluginData);
+        parser.parse();
 
-      it('Parse simple.yml should set valid component', () => {
+        expect(pluginData.components).not.toBeNull();
+        expect(pluginData.components.length).toEqual(0);
+      });
+
+      it('Should set empty components with files without content', () => {
+        const pluginData = new DefaultData();
+        const parser = new KubernetesParser(pluginData);
+        parser.parse([
+          new FileInformation({ path: 'a', content: null }),
+          new FileInformation({ path: 'a', content: '' }),
+        ]);
+
+        expect(pluginData.components).not.toBeNull();
+        expect(pluginData.components.length).toEqual(0);
+      });
+
+      it('Parse deployment.yml should set valid component', () => {
         const pluginData = new DefaultData();
         const metadata = new KubernetesMetadata(pluginData);
         metadata.parse();

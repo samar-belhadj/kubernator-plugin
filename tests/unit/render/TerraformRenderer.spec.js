@@ -10,7 +10,7 @@ import {
 } from 'leto-modelizer-plugin-core';
 import TerraformComponentDefinition from 'src/models/TerraformComponentDefinition';
 import { getTerraformMetadata } from 'tests/resources/utils';
-
+//il faut avoir un test pour le constructeur
 describe('Test TerraformRenderer', () => {
   it('Test constructor', () => {
     expect(new TerraformRender().template).not.toBeNull();

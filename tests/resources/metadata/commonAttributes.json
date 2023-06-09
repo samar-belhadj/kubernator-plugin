@@ -1,0 +1,15 @@
+[
+    {
+      "name": "attribute1",
+      "type": "String"
+    },
+    {
+      "name": "attribute2",
+      "type": "Number"
+    },
+    {
+      "name": "attribute3",
+      "type": "Boolean"
+    }
+  ]
+  

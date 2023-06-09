@@ -1,0 +1,59 @@
+{
+    "v1": [
+      {
+        "type": "component1",
+        "attributes": [
+          {
+            "name": "attribute1",
+            "type": "String"
+          },
+          {
+            "name": "attribute2",
+            "type": "Number"
+          }
+        ]
+      },
+      {
+        "type": "component2",
+        "attributes": [
+          {
+            "name": "attribute3",
+            "type": "Boolean"
+          },
+          {
+            "name": "attribute4",
+            "type": "String"
+          }
+        ]
+      }
+    ],
+    "v2": [
+      {
+        "type": "component3",
+        "attributes": [
+          {
+            "name": "attribute5",
+            "type": "Number"
+          },
+          {
+            "name": "attribute6",
+            "type": "Boolean"
+          }
+        ]
+      },
+      {
+        "type": "component4",
+        "attributes": [
+          {
+            "name": "attribute7",
+            "type": "String"
+          },
+          {
+            "name": "attribute8",
+            "type": "Number"
+          }
+        ]
+      }
+    ]
+  }
+  
