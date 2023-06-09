@@ -1,79 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js">
-    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="2">
-      <failure message="ReferenceError: apiVersion is not defined"><![CDATA[ReferenceError: apiVersion is not defined
-    at new apiVersion (/home/samar/Desktop/Ditrit/kubernator-plugin/src/models/KubernetesComponentDefinition.js:13:5)
-    at Object.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js:6:25)
-    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
-    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
-    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
-    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
-    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
-    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
-    </testCase>
-    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check passing empty object to constructor" duration="7">
-      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
-
-Expected: false
-Received: undefined
-    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js:14:36)
-    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
-    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
-    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
-    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
-    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
-    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
-    </testCase>
-    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check passing props to constructor" duration="0"/>
-  </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js">
-    <testCase name="Test KubernetesMetadata Test methods Test method: parse Should return valid content when parsing default metadata" duration="3">
-      <failure message="Error: ENOENT: no such file or directory, open &apos;tests/resources/metadata/default.json&apos;"><![CDATA[Error: ENOENT: no such file or directory, open 'tests/resources/metadata/default.json'
-    at Object.openSync (node:fs:601:3)
-    at Object.readFileSync (node:fs:469:35)
-    at Object.readFileSync (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:9:51)
-    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
-    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
-    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
-    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
-    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
-    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
-    </testCase>
-  </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/TerraformRenderer.spec.js">
-  </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesData.spec.js">
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with default values" duration="7"/>
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with custom values" duration="8">
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with default values" duration="6"/>
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with custom values" duration="11">
       <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
 
 Expected: "components/yComponent.yaml"
@@ -116,9 +45,9 @@ Received: "components/null_1.yaml"
     at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
     at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
     </testCase>
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with unsupported type" duration="4"/>
-    <testCase name="Test class: KubernetesData Test __createAttribute method Should create a component attribute" duration="7"/>
-    <testCase name="Test class: KubernetesData Test __createAttribute method Should return null if attribute name is not found" duration="2">
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with unsupported type" duration="2"/>
+    <testCase name="Test class: KubernetesData Test __createAttribute method Should create a component attribute" duration="1"/>
+    <testCase name="Test class: KubernetesData Test __createAttribute method Should return null if attribute name is not found" duration="1">
       <failure message="TypeError: Cannot read properties of undefined (reading &apos;type&apos;)"><![CDATA[TypeError: Cannot read properties of undefined (reading 'type')
     at KubernetesData.type [as __createAttribute] (/home/samar/Desktop/Ditrit/kubernator-plugin/src/models/KubernetesData.js:46:24)
     at Object.__createAttribute (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesData.spec.js:96:30)
@@ -138,15 +67,185 @@ Received: "components/null_1.yaml"
     at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
     at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
     </testCase>
-    <testCase name="Test class: KubernetesData Test class inheritance Should inherit from DefaultData" duration="21"/>
+    <testCase name="Test class: KubernetesData Test class inheritance Should inherit from DefaultData" duration="0"/>
   </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/index.spec.js">
-    <testCase name="Test index of project Index should return KubernetesPlugin" duration="6"/>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js">
+    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="2">
+      <failure message="ReferenceError: apiVersion is not defined"><![CDATA[ReferenceError: apiVersion is not defined
+    at new apiVersion (/home/samar/Desktop/Ditrit/kubernator-plugin/src/models/KubernetesComponentDefinition.js:13:5)
+    at Object.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js:6:25)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check passing empty object to constructor" duration="5">
+      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
+
+Expected: false
+Received: undefined
+    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js:14:36)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check passing props to constructor" duration="1"/>
+  </file>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/TerraformRenderer.spec.js">
+  </file>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js">
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesPlugin.spec.js">
     <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="6"/>
   </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js">
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js">
+    <testCase name="Test class: KubernetesMetadata Test validate method should return true for valid metadata" duration="5"/>
+    <testCase name="Test class: KubernetesMetadata Test parse method should call setChildrenTypes method" duration="3">
+      <failure message="ReferenceError: KubernetesComponentDefinition is not defined"><![CDATA[ReferenceError: KubernetesComponentDefinition is not defined
+    at KubernetesMetadata.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:36:9)
+    at /home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:383:39
+    at KubernetesMetadata.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:390:13)
+    at KubernetesMetadata.mockConstructor [as getComponentDefinition] (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:94:19)
+    at getComponentDefinition (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:33:29)
+    at Array.map (<anonymous>)
+    at map (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:32:56)
+    at Array.flatMap (<anonymous>)
+    at KubernetesMetadata.flatMap [as parse] (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:31:61)
+    at Object.parse (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:47:16)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusHook (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:262:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:227:5)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesMetadata Test parse method should set the component definitions" duration="1">
+      <failure message="ReferenceError: KubernetesComponentDefinition is not defined"><![CDATA[ReferenceError: KubernetesComponentDefinition is not defined
+    at KubernetesMetadata.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:36:9)
+    at /home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:383:39
+    at KubernetesMetadata.<anonymous> (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:390:13)
+    at KubernetesMetadata.mockConstructor [as getComponentDefinition] (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-mock/build/index.js:94:19)
+    at getComponentDefinition (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:33:29)
+    at Array.map (<anonymous>)
+    at map (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:32:56)
+    at Array.flatMap (<anonymous>)
+    at KubernetesMetadata.flatMap [as parse] (/home/samar/Desktop/Ditrit/kubernator-plugin/src/metadata/KubernetesMetadata.js:31:61)
+    at Object.parse (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:47:16)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusHook (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:262:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:227:5)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesMetadata Test getComponentDefinition method should return a KubernetesComponentDefinition with definedAttributes" duration="2">
+      <failure message="ReferenceError: KubernetesComponentDefinition is not defined"><![CDATA[ReferenceError: KubernetesComponentDefinition is not defined
+    at Object.KubernetesComponentDefinition (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:77:43)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesMetadata Test getComponentDefinition method should include commonAttributes if apiVersion is not &quot;others&quot;" duration="2"/>
+    <testCase name="Test class: KubernetesMetadata Test getAttributeDefinition method should return a ComponentAttributeDefinition" duration="1">
+      <failure message="ReferenceError: ComponentAttributeDefinition is not defined"><![CDATA[ReferenceError: ComponentAttributeDefinition is not defined
+    at Object.ComponentAttributeDefinition (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:107:43)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesMetadata Test getAttributeDefinition method should set the expanded property" duration="1"/>
+    <testCase name="Test class: KubernetesMetadata Test getAttributeDefinition method should format the displayName" duration="1"/>
+    <testCase name="Test class: KubernetesMetadata Test setChildrenTypes method should set childrenTypes for component definitions" duration="5">
+      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
+
+Expected: []
+Received: undefined
+    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/metadata/KubernetesMetadata.spec.js:144:46)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="Test class: KubernetesMetadata Test formatDisplayName method should format the display name" duration="2"/>
+  </file>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/index.spec.js">
+    <testCase name="Test index of project Index should return KubernetesPlugin" duration="13"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js">
   </file>
