@@ -1,7 +1,5 @@
 import KubernetesData from 'src/models/KubernetesData';
 import {
-  Component,
-  ComponentAttribute,
   DefaultData,
   ComponentDefinition,
 } from 'leto-modelizer-plugin-core';
