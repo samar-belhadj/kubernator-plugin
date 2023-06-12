@@ -1,62 +1,271 @@
 {
-  "name": "provider",
-  "model": "provider_model",
-  "icon": "provider_icon",
-  "attributes": [{
-    "name": "name1",
-    "type": "String"
-  }],
-  "data": [{
-    "type": "data_type",
-    "model": "data_model",
-    "icon": "data_icon",
-    "isContainer": false,
-    "attributes": [{
-      "name": "boolean1",
-      "type": "Boolean"
-    }, {
-      "name": "number1",
-      "type": "Number"
-    }, {
-      "name": "array1",
-      "type": "Array"
-    }, {
-      "name": "object1",
-      "type": "Object",
-      "attributes": [{
-        "name": "name2",
-        "type": "String"
-      }]
-    }]
-  }],
-  "modules": [{
-    "type": "module_type",
-    "model": "module_model",
-    "icon": "module_icon",
-    "isContainer": false,
-    "attributes": []
-  }],
-  "resources": [{
-    "type": "resource_type",
-    "model": "resource_model",
-    "icon": "resource_icon",
-    "isContainer": true,
-    "attributes": [{
-      "name": "name3",
-      "type": "String"
-    }, {
-      "name": "link1",
-      "type": "Link",
-      "linkType": "Default",
-      "linkRef": "module_type"
-    }]
-  }],
-  "variables": [{
-    "type": "variable_type",
-    "model": "variable_model",
-    "icon": "variable_icon",
-    "isContainer": false,
-    "required": false,
-    "attributes": []
-  }]
-}
+    "commonAttributes": [
+      {
+        "name": "metadata",
+        "type": "Object",
+        "displayName": "Metadata",
+        "definedAttributes": [
+          {
+            "name": "name",
+            "type": "String",
+            "displayName": "Name"
+          },
+          {
+            "name": "labels",
+            "type": "Object",
+            "displayName": "Labels",
+            "definedAttributes": [
+              {
+                "name": "app",
+                "type": "String",
+                "displayName": "App"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "apiVersions": {
+      "v1": [
+        {
+          "type": "Service",
+          "attributes": [
+            {
+              "name": "metadata",
+              "type": "Object",
+              "displayName": "Metadata",
+              "definedAttributes": [
+                {
+                  "name": "name",
+                  "type": "String",
+                  "displayName": "Name"
+                },
+                {
+                  "name": "labels",
+                  "type": "Object",
+                  "displayName": "Labels",
+                  "definedAttributes": [
+                    {
+                      "name": "app",
+                      "type": "String",
+                      "displayName": "App"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "spec",
+              "type": "Object",
+              "displayName": "Specification",
+              "definedAttributes": [
+                {
+                  "name": "selector",
+                  "type": "Object",
+                  "displayName": "Selector",
+                  "definedAttributes": [
+                    {
+                      "name": "app",
+                      "type": "String",
+                      "displayName": "App"
+                    }
+                  ]
+                },
+                {
+                  "name": "ports",
+                  "type": "Array",
+                  "displayName": "Ports",
+                  "definedAttributes": [
+                    {
+                      "name": null,
+                      "type": "Object",
+                      "displayName": "Port",
+                      "definedAttributes": [
+                        {
+                          "name": "protocol",
+                          "type": "String",
+                          "displayName": "Protocol"
+                        },
+                        {
+                          "name": "port",
+                          "type": "Number",
+                          "displayName": "Port"
+                        },
+                        {
+                          "name": "targetPort",
+                          "type": "Number",
+                          "displayName": "Target Port"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Secret",
+          "attributes": [
+            {
+              "name": "metadata",
+              "type": "Object",
+              "displayName": "Metadata",
+              "definedAttributes": [
+                {
+                  "name": "name",
+                  "type": "String",
+                  "displayName": "Name"
+                }
+              ]
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "displayName": "Type"
+            },
+            {
+              "name": "data",
+              "type": "Object",
+              "displayName": "Data",
+              "definedAttributes": [
+                {
+                  "name": "username",
+                  "type": "String",
+                  "displayName": "Username"
+                },
+                {
+                  "name": "password",
+                  "type": "String",
+                  "displayName": "Password"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "apps/v1": [
+        {
+          "type": "Deployment",
+          "attributes": [
+            {
+              "name": "metadata",
+              "type": "Object",
+              "displayName": "Metadata",
+              "definedAttributes": [
+                {
+                  "name": "name",
+                  "type": "String",
+                  "displayName": "Name"
+                },
+                {
+                  "name": "labels",
+                  "type": "Object",
+                  "displayName": "Labels",
+                  "definedAttributes": [
+                    {
+                      "name": "app",
+                      "type": "String",
+                      "displayName": "App"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "spec",
+              "type": "Object",
+              "displayName": "Specification",
+              "definedAttributes": [
+                {
+                  "name": "replicas",
+                  "type": "Number",
+                  "displayName": "Replicas"
+                },
+                {
+                  "name": "selector",
+                  "type": "Object",
+                  "displayName": "Selector",
+                  "definedAttributes": [
+                    {
+                      "name": "matchLabels",
+                      "type": "Object",
+                      "displayName": "Match Labels",
+                      "definedAttributes": [
+                        {
+                          "name": "app",
+                          "type": "String",
+                          "displayName": "App"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StatefulSet",
+          "attributes": [
+            {
+              "name": "metadata",
+              "type": "Object",
+              "displayName": "Metadata",
+              "definedAttributes": [
+                {
+                  "name": "name",
+                  "type": "String",
+                  "displayName": "Name"
+                },
+                {
+                  "name": "labels",
+                  "type": "Object",
+                  "displayName": "Labels",
+                  "definedAttributes": [
+                    {
+                      "name": "app",
+                      "type": "String",
+                      "displayName": "App"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "spec",
+              "type": "Object",
+              "displayName": "Specification",
+              "definedAttributes": [
+                {
+                  "name": "replicas",
+                  "type": "Number",
+                  "displayName": "Replicas"
+                },
+                {
+                  "name": "selector",
+                  "type": "Object",
+                  "displayName": "Selector",
+                  "definedAttributes": [
+                    {
+                      "name": "matchLabels",
+                      "type": "Object",
+                      "displayName": "Match Labels",
+                      "definedAttributes": [
+                        {
+                          "name": "app",
+                          "type": "String",
+                          "displayName": "App"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+  
