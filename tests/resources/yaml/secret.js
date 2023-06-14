@@ -9,7 +9,8 @@ const secretDef = pluginData.definitions.components.find(({ type }) => type === 
 const secretMetadataDef = secretDef.definedAttributes.find(({ name }) => name === 'metadata');
 const secretDataDef = secretDef.definedAttributes.find(({ name }) => name === 'data');
 
-const secret = new Component({
+export default [
+new Component({
   id: 'test-secret',
   name: 'test-secret',
   definition: secretDef,
@@ -51,6 +52,5 @@ const secret = new Component({
       ],
     }),
   ],
-});
-
-export default secret;
+}),
+];

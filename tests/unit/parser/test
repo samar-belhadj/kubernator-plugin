@@ -1,0 +1,90 @@
+import fs from 'fs';
+import KubernetesParser from 'src/parser/KubernetesParser';
+import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
+import KubernetesData from 'src/models/KubernetesData';
+import { FileInput, FileInformation, DefaultData} from 'leto-modelizer-plugin-core';
+import deployment from 'tests/resources/yaml/deployment';
+import service from 'tests/resources/yaml/service';
+import secret from 'tests/resources/yaml/secret';
+import ingress from 'tests/resources/yaml/ingress';
+import configmap from 'tests/resources/yaml/configmap';
+
+describe('Test KubernetesParser', () => {
+  describe('Test functions', () => {
+    describe('Test function: isParsable', () => {
+      const parser = new KubernetesParser();
+
+
+      it('Should return true on .yml file', () => {
+
+        expect(parser.isParsable(new FileInformation({
+          path: 'simple.yml',
+        }))).toBeTruthy();
+
+      });
+
+      it('Should return false on file that is not a YAML file', () => {
+
+        expect(parser.isParsable(new FileInformation({
+          path: 'deployment.js',
+        }))).toBeFalsy();
+      });
+      
+    });
+
+    describe('Test function: parse', () => {
+      it('Should set empty components without input files', () => {
+        const pluginData = new DefaultData();
+        const parser = new KubernetesParser(pluginData);
+        parser.parse();
+
+        expect(pluginData.components).not.toBeNull();
+        expect(pluginData.components.length).toEqual(0);
+      });
+
+      it('Should set empty components with files without content', () => {
+        const pluginData = new DefaultData();
+        const parser = new KubernetesParser(pluginData);
+        parser.parse([
+          new FileInformation({ path: 'a', content: null }),
+          new FileInformation({ path: 'a', content: '' }),
+        ]);
+
+        expect(pluginData.components).not.toBeNull();
+        expect(pluginData.components.length).toEqual(0);
+      });
+
+      it('Parse service.yaml should set valid component', () => {
+        const pluginData = new KubernetesData();
+        const metadata = new KubernetesMetadata(pluginData);
+        metadata.parse();
+
+        const parser = new KubernetesParser(pluginData);
+        const file = new FileInput({
+          path: './service.yaml',
+          content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
+        });
+
+        parser.parse([file]);
+
+        expect(pluginData.components).toEqual(service.components);
+      });
+
+     /* it('Parse deployment.yml should set valid component', () => {
+        const pluginData = new KubernetesData();
+        const metadata = new KubernetesMetadata(pluginData);
+        metadata.parse();
+
+        const parser = new KubernetesParser(pluginData);
+        const file = new FileInput({
+          path: './deployment.yml',
+          content: fs.readFileSync('tests/resources/yaml/deployment.yml', 'utf8'),
+        });
+
+        parser.parse([file]);
+
+        expect(pluginData.components).toEqual(deployment.components);
+      });*/
+    });
+  });
+});

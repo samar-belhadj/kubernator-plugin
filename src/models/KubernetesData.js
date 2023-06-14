@@ -40,6 +40,9 @@ class KubernetesData extends DefaultData {
     const definition = parentDefinition.definedAttributes.find(
       (attributeDefinition) => attributeDefinition.name === name
     );
+    if (!definition) {
+      return null;
+    }
     const attribute = new ComponentAttribute({
       name,
       value,

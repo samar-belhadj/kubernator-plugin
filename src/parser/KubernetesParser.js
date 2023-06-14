@@ -13,7 +13,8 @@ class KubernetesParser extends DefaultParser {
    * @returns {boolean} Boolean that indicates if this file can be parsed or not.
    */
   isParsable(fileInformation) {
-    return /\.ya?ml$/.test(fileInformation.path);
+    const filePath = fileInformation.path.toLowerCase();
+    return /\.ya?ml$/.test(filePath);
   }
 
   /**

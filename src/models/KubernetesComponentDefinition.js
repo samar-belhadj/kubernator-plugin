@@ -8,16 +8,17 @@ class KubernetesComponentDefinition extends ComponentDefinition {
    * Default constructor.
    * @param {Object} [props] - Object that contains all properties to set.
    * @param {String} [props.apiVersion] - Kubernetes apiVersion (<apiGroup>/<version>).
-   */
-  constructor(props = {
-    apiVersion
-  }) {
+   * @see ComponentDefinition
+  */
+  constructor(props = { apiVersion: "v1"}) {
     super(props);
     /**
      * Kubernetes apiVersion (<apiGroup>/<version>)
      * @type {String}
+     * 
      */
     this.apiVersion = props.apiVersion;
+
   }
 }
 

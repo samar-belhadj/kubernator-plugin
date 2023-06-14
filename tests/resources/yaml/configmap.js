@@ -9,7 +9,8 @@ const configMapDef = pluginData.definitions.components.find(({ type }) => type =
 const configMapMetadataDef = configMapDef.definedAttributes.find(({ name }) => name === 'metadata');
 const configMapDataDef = configMapDef.definedAttributes.find(({ name }) => name === 'data');
 
-const configMap = new Component({
+export default [
+new Component({
   id: 'test-configmap',
   name: 'test-configmap',
   definition: configMapDef,
@@ -40,6 +41,5 @@ const configMap = new Component({
       ],
     }),
   ],
-});
-
-export default configMap;
+}),
+];

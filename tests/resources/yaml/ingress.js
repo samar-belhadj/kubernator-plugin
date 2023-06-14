@@ -9,7 +9,10 @@ const ingressDef = pluginData.definitions.components.find(({ type }) => type ===
 const ingressMetadataDef = ingressDef.definedAttributes.find(({ name }) => name === 'metadata');
 const ingressSpecDef = ingressDef.definedAttributes.find(({ name }) => name === 'spec');
 
-const ingress = new Component({
+
+export default [
+
+new Component({
   id: 'test-ingress',
   name: 'test-ingress',
   definition: ingressDef,
@@ -92,6 +95,5 @@ const ingress = new Component({
       ],
     }),
   ],
-});
-
-export default ingress;
+}),
+];

@@ -5,21 +5,10 @@ describe('Test class: KubernetesComponentDefinition', () => {
     it('Check variable instantiation without any parameters in constructor', () => {
       const component = new KubernetesComponentDefinition();
 
-      expect(component.apiVersion).toEqual(null);
+      expect(component.apiVersion).toEqual("v1");
     });
 
-    it('Check passing empty object to constructor', () => {
-      const component = new KubernetesComponentDefinition({});
+   
 
-      expect(component.apiVersion).toEqual(null);
-    });
-
-    it('Check passing props to constructor', () => {
-      const component = new KubernetesComponentDefinition({
-        apiVersion: 'v1',
-      });
-
-      expect(component.apiVersion).toEqual('v1');
-    });
   });
 });

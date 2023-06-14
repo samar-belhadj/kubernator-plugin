@@ -21,22 +21,26 @@ describe('Test class: KubernetesData', () => {
     it('Should add a component with custom values', () => {
       const data = new KubernetesData();
       const definition = new ComponentDefinition();
-      const folder = 'components/';
-      const fileName = 'myComponent.yaml';
+      const folder = 'yaml/';
+      const fileName = 'myComponent';
       const componentId = data.addComponent(definition, folder, fileName);
 
       expect(data.components.length).toEqual(1);
       expect(data.components[0].id).toEqual(componentId);
       expect(data.components[0].definition).toEqual(definition);
-      expect(data.components[0].path).toEqual(`${folder}${fileName}`);
+      expect(data.components[0].path).toEqual(`${folder}${componentId}.yaml`);
       expect(data.components[0].attributes.length).toEqual(0);
     });
 
     it('Should add a component with additional attributes', () => {
       const data = new KubernetesData();
-      const definition = new ComponentDefinition({ type: 'Container' });
+      const attributeDefinition = {
+        name: 'isInitContainer', 
+        type: 'boolean'
+      };
+      const definition = new ComponentDefinition({ type: 'Container', definedAttributes: [attributeDefinition] });
       const componentId = data.addComponent(definition);
-
+    
       expect(data.components.length).toEqual(1);
       expect(data.components[0].id).toEqual(componentId);
       expect(data.components[0].definition).toEqual(definition);
@@ -44,13 +48,10 @@ describe('Test class: KubernetesData', () => {
       expect(data.components[0].attributes.length).toEqual(1);
       expect(data.components[0].attributes[0].name).toEqual('isInitContainer');
       expect(data.components[0].attributes[0].value).toEqual(false);
-      expect(data.components[0].attributes[0].type).toEqual(
-        definition.definedAttributes[0].type
-      );
-      expect(data.components[0].attributes[0].definition).toEqual(
-        definition.definedAttributes[0]
-      );
+      expect(data.components[0].attributes[0].type).toEqual(definition.definedAttributes[0].type);
+      expect(data.components[0].attributes[0].definition).toEqual(definition.definedAttributes[0]);
     });
+    
 
     it('Should add a component with unsupported type', () => {
       const data = new KubernetesData();
