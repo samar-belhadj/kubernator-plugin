@@ -1,19 +1,18 @@
 import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
-import { Component, ComponentAttribute, DefaultData } from 'leto-modelizer-plugin-core';
+import { Component, ComponentAttribute } from 'leto-modelizer-plugin-core';
+import KubernetesData from '../../../src/models/KubernetesData';
 
-const pluginData = new DefaultData();
+const pluginData = new KubernetesData();
 const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 
 const deploymentDef = pluginData.definitions.components.find(({ type }) => type === 'Deployment');
 const deploymentMetadataDef = deploymentDef.definedAttributes.find(({ name }) => name === 'metadata');
 const deploymentSpecDef = deploymentDef.definedAttributes.find(({ name }) => name === 'spec');
-const deploymentSelectorDef = deploymentSpecDef.definedAttributes.find(({ name }) => name === 'selector');
 
 export default [
   new Component({
-    id: 'deployment_1',
-    name: 'deployment',
+    id: 'deployment',
     definition: deploymentDef,
     path: './deployment.yml',
     attributes: [
@@ -22,8 +21,9 @@ export default [
         type: 'Object',
         definition: deploymentMetadataDef,
         value: {
+          name: 'nginx-deployment',
           labels: {
-            app: 'nginx',
+            'app.kubernetes.io/name': 'nginx',
           },
         },
       }),
@@ -35,19 +35,20 @@ export default [
           replicas: 3,
           selector: {
             matchLabels: {
-              app: 'nginx',
+              'app.kubernetes.io/name': 'nginx',
             },
           },
           template: {
             metadata: {
+              name: 'nginx',
               labels: {
-                app: 'nginx',
+                'app.kubernetes.io/name': 'nginx',
               },
             },
             spec: {
               containers: [
                 {
-                  name: 'nginx',
+                  name: 'nginx-c',
                   image: 'nginx:1.14.2',
                   ports: [
                     {

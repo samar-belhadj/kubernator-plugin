@@ -66,6 +66,8 @@ describe('KubernetesParser', () => {
 
       parser.parse([file]);
 
+      console.log(serviceComponent.attributes);
+
       expect(parser.pluginData.components[0].attributes).toEqual(serviceComponent.attributes);
     });
   });

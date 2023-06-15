@@ -1,6 +1,6 @@
-import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
 import { Component, ComponentAttribute } from 'leto-modelizer-plugin-core';
 import KubernetesData from '../../../src/models/KubernetesData';
+import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
 
 const pluginData = new KubernetesData();
 const metadata = new KubernetesMetadata(pluginData);
@@ -13,7 +13,10 @@ const serviceSelectorDef = serviceSpecDef.definedAttributes.find(({ name }) => n
 
 const serviceComponent = new Component({
   id: 'test-service',
-  definition: serviceDef,
+  definition: {
+    apiVersion: 'v1',
+    kind: 'Service',
+  },
   path: './service.yaml',
   attributes: [
     new ComponentAttribute({
@@ -25,6 +28,17 @@ const serviceComponent = new Component({
         type: 'String',
         value: 'test-service',
       }),
+      attributes: [
+        new ComponentAttribute({
+          name: 'labels',
+          type: 'Object',
+          value: new ComponentAttribute({
+            name: 'app.kubernetes.io/name',
+            type: 'String',
+            value: 'test-service',
+          }),
+        }),
+      ],
     }),
     new ComponentAttribute({
       name: 'spec',
@@ -40,6 +54,40 @@ const serviceComponent = new Component({
           value: 'test-app',
         }),
       }),
+      attributes: [
+        new ComponentAttribute({
+          name: 'type',
+          type: 'String',
+          value: 'NodePort',
+        }),
+        new ComponentAttribute({
+          name: 'ports',
+          type: 'Array',
+          value: [
+            new ComponentAttribute({
+              name: '',
+              type: 'Object',
+              attributes: [
+                new ComponentAttribute({
+                  name: 'protocol',
+                  type: 'String',
+                  value: 'TCP',
+                }),
+                new ComponentAttribute({
+                  name: 'port',
+                  type: 'Number',
+                  value: 80,
+                }),
+                new ComponentAttribute({
+                  name: 'targetPort',
+                  type: 'String',
+                  value: '80',
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
     }),
   ],
 });

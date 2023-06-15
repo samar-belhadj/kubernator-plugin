@@ -1,78 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js">
-    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="4"/>
+    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="3"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesData.spec.js">
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with default values" duration="6"/>
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with custom values" duration="2"/>
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with default values" duration="18"/>
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with custom values" duration="1"/>
     <testCase name="Test class: KubernetesData Test addComponent method Should add a component with additional attributes" duration="2"/>
-    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with unsupported type" duration="1"/>
+    <testCase name="Test class: KubernetesData Test addComponent method Should add a component with unsupported type" duration="2"/>
     <testCase name="Test class: KubernetesData Test __createAttribute method Should create a component attribute" duration="1"/>
-    <testCase name="Test class: KubernetesData Test __createAttribute method Should return null if attribute name is not found" duration="3"/>
+    <testCase name="Test class: KubernetesData Test __createAttribute method Should return null if attribute name is not found" duration="1"/>
     <testCase name="Test class: KubernetesData Test class inheritance Should inherit from DefaultData" duration="0"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/index.spec.js">
-    <testCase name="Test index of project Index should return KubernetesPlugin" duration="7"/>
+    <testCase name="Test index of project Index should return KubernetesPlugin" duration="5"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesPlugin.spec.js">
-    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="5"/>
-  </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js">
-    <testCase name="Test KubernetesMetadata Test method: render Should render service" duration="93">
-      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
-
-- Expected  - 3
-+ Received  + 6
-
-  o {
-    "content": "apiVersion: v1
-  kind: Service
-  metadata:
-    name: test-service
-+   labels:
-+     app.kubernetes.io/name: test-service
-  spec:
--   selector:
--     app: test-app
--   type: NodePort",
-+   selector: {}
-+   type: NodePort
-+   ports: []
-+ ",
-    "path": "./service.yaml",
-  }
-    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js:24:22)
-    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
-    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
-    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
-    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
-    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
-    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
-    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
-    </testCase>
+    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="14"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js">
-    <testCase name="KubernetesParser isParsable should return true for a YAML file" duration="2"/>
+    <testCase name="KubernetesParser isParsable should return true for a YAML file" duration="3"/>
     <testCase name="KubernetesParser isParsable should return true for a YML file" duration="1"/>
-    <testCase name="KubernetesParser isParsable should return false for a non-YAML file" duration="0"/>
-    <testCase name="KubernetesParser parse should return empty components for no input files" duration="8"/>
-    <testCase name="KubernetesParser parse Should set empty components with files without content" duration="11"/>
-    <testCase name="KubernetesParser parse should parse a valid YAML file and return valid components" duration="56">
+    <testCase name="KubernetesParser isParsable should return false for a non-YAML file" duration="1"/>
+    <testCase name="KubernetesParser parse should return empty components for no input files" duration="24"/>
+    <testCase name="KubernetesParser parse Should set empty components with files without content" duration="3"/>
+    <testCase name="KubernetesParser parse should parse a valid YAML file and return valid components" duration="85">
       <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
 
-- Expected  - 12
-+ Received  + 36
+- Expected  -   8
++ Received  + 571
 
-@@ -222,16 +222,11 @@
+@@ -222,16 +222,200 @@
         "type": "Object",
         "url": null,
       },
@@ -81,16 +39,202 @@
 -     "value": n {
 -       "definition": null,
 -       "name": "name",
--       "type": "String",
--       "value": "test-service",
--     },
-+     "value": Array [],
++     "value": Array [
++       n {
++         "definition": t {
++           "containerRef": null,
++           "definedAttributes": Array [
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The name of the application.",
++               "displayName": "app.kubernetes.io/name",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/name",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "A unique name identifying the instance of an application.",
++               "displayName": "app.kubernetes.io/instance",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/instance",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The current version of the application (e.g., a <a href=\"https://semver.org/spec/v1.0.0.html\">SemVer 1.0</a>, revision hash, etc.).",
++               "displayName": "app.kubernetes.io/version",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/version",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The component within the architecture.",
++               "displayName": "app.kubernetes.io/component",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/component",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The name of a higher level application this one is part of.",
++               "displayName": "app.kubernetes.io/part-of",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/part-of",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The tool being used to manage the operation of an application.",
++               "displayName": "app.kubernetes.io/managed-by",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/managed-by",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++           ],
++           "description": null,
++           "displayName": "Labels",
++           "expanded": false,
++           "linkColor": "black",
++           "linkDashStyle": null,
++           "linkRef": Array [],
++           "linkType": null,
++           "linkWidth": 2,
++           "name": "labels",
++           "required": false,
++           "rules": Object {
++             "max": null,
++             "min": null,
++             "regex": null,
++             "values": null,
++           },
++           "type": "Object",
++           "url": null,
++         },
++         "name": "labels",
++         "type": "Object",
++         "value": Array [
++           n {
++             "definition": t {
++               "containerRef": null,
++               "definedAttributes": Array [],
++               "description": "The name of the application.",
++               "displayName": "app.kubernetes.io/name",
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "app.kubernetes.io/name",
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "String",
++               "url": null,
++             },
++             "name": "app.kubernetes.io/name",
+              "type": "String",
+              "value": "test-service",
+            },
++         ],
++       },
++     ],
     },
     n {
       "definition": t {
         "containerRef": null,
         "definedAttributes": Array [
-@@ -442,11 +437,12 @@
+@@ -442,11 +626,12 @@
         "type": "Object",
         "url": null,
       },
@@ -104,16 +248,12 @@
             "definedAttributes": Array [],
             "description": null,
             "displayName": "Selector",
-@@ -466,15 +462,43 @@
+@@ -466,15 +651,393 @@
             },
             "type": "Link",
             "url": null,
           },
           "name": "selector",
--       "type": "Object",
--       "value": n {
--         "definition": null,
--         "name": "app",
 +         "type": "Link",
 +         "value": Array [],
 +       },
@@ -142,18 +282,414 @@
 +               "ExternalName",
 +             ],
 +           },
-            "type": "String",
--         "value": "test-app",
++           "type": "String",
 +           "url": "https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types",
-          },
++         },
 +         "name": "type",
 +         "type": "String",
 +         "value": "NodePort",
-        },
++       },
++       n {
++         "definition": t {
++           "containerRef": null,
++           "definedAttributes": Array [
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Name",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "name",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Protocol",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "protocol",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": Array [
++                       "TCP",
++                       "UDP",
++                       "SCTP",
++                     ],
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "port",
++                   "required": true,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "Number",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Target Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "targetPort",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++               ],
++               "description": null,
++               "displayName": null,
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": null,
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
+                "type": "Object",
+-       "value": n {
+-         "definition": null,
+-         "name": "app",
++               "url": null,
++             },
++           ],
++           "description": null,
++           "displayName": "Ports",
++           "expanded": false,
++           "linkColor": "black",
++           "linkDashStyle": null,
++           "linkRef": Array [],
++           "linkType": null,
++           "linkWidth": 2,
++           "name": "ports",
++           "required": false,
++           "rules": Object {
++             "max": null,
++             "min": null,
++             "regex": null,
++             "values": null,
++           },
++           "type": "Array",
++           "url": null,
++         },
++         "name": "ports",
++         "type": "Array",
++         "value": Array [
++           n {
++             "definition": t {
++               "containerRef": null,
++               "definedAttributes": Array [
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Name",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "name",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Protocol",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "protocol",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": Array [
++                       "TCP",
++                       "UDP",
++                       "SCTP",
++                     ],
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "port",
++                   "required": true,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "Number",
++                   "url": null,
++                 },
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Target Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "targetPort",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
+                    "type": "String",
+-         "value": "test-app",
++                   "url": null,
++                 },
++               ],
++               "description": null,
++               "displayName": null,
++               "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": Array [],
++               "linkType": null,
++               "linkWidth": 2,
++               "name": null,
++               "required": false,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "Object",
++               "url": null,
++             },
++             "name": "0",
++             "type": "Object",
++             "value": Array [
++               n {
++                 "definition": t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Protocol",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "protocol",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": Array [
++                       "TCP",
++                       "UDP",
++                       "SCTP",
++                     ],
+                    },
++                   "type": "String",
++                   "url": null,
++                 },
++                 "name": "protocol",
++                 "type": "String",
++                 "value": "TCP",
++               },
++               n {
++                 "definition": t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "port",
++                   "required": true,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "Number",
++                   "url": null,
+                  },
++                 "name": "port",
++                 "type": "Number",
++                 "value": 80,
++               },
++               n {
++                 "definition": t {
++                   "containerRef": null,
++                   "definedAttributes": Array [],
++                   "description": null,
++                   "displayName": "Target Port",
++                   "expanded": false,
++                   "linkColor": "black",
++                   "linkDashStyle": null,
++                   "linkRef": Array [],
++                   "linkType": null,
++                   "linkWidth": 2,
++                   "name": "targetPort",
++                   "required": false,
++                   "rules": Object {
++                     "max": null,
++                     "min": null,
++                     "regex": null,
++                     "values": null,
++                   },
++                   "type": "String",
++                   "url": null,
++                 },
++                 "name": "targetPort",
++                 "type": "String",
++                 "value": "80",
++               },
++             ],
++           },
++         ],
++       },
 +     ],
     },
   ]
-    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js:69:58)
+    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js:71:58)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+  </file>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js">
+    <testCase name="Test KubernetesMetadata Test method: render Should render service" duration="65">
+      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 3
++ Received  + 2
+
+@@ -4,15 +4,14 @@
+  metadata:
+    name: test-service
+    labels:
+      app.kubernetes.io/name: test-service
+  spec:
+-   selector:
+-     app: test-app
++   selector: {}
+    type: NodePort
+    ports:
+      - protocol: TCP
+        port: 80
+-       targetPort: \"80\"
++       targetPort: '80'
+  ",
+    "path": "./service.yaml",
+  }
+    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js:24:22)
     at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
     at new Promise (<anonymous>)
     at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)

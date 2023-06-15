@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="310" lines-covered="155" line-rate="0.5" branches-valid="151" branches-covered="63" branch-rate="0.4172" timestamp="1686749312357" complexity="0" version="0.1">
+<coverage lines-valid="310" lines-covered="159" line-rate="0.5129" branches-valid="151" branches-covered="71" branch-rate="0.47009999999999996" timestamp="1686819005224" complexity="0" version="0.1">
   <sources>
     <source>/home/samar/Desktop/Ditrit/kubernator-plugin</source>
   </sources>
@@ -243,9 +243,9 @@
         </class>
       </classes>
     </package>
-    <package name="src.parser" line-rate="0.4571" branch-rate="0.3593">
+    <package name="src.parser" line-rate="0.47850000000000004" branch-rate="0.46869999999999995">
       <classes>
-        <class name="KubernetesListener.js" filename="src/parser/KubernetesListener.js" line-rate="0.3406" branch-rate="0.3061">
+        <class name="KubernetesListener.js" filename="src/parser/KubernetesListener.js" line-rate="0.3736" branch-rate="0.4489">
           <methods>
             <method name="(anonymous_0)" hits="2" signature="()V">
               <lines>
@@ -337,19 +337,19 @@
                 <line number="175" hits="12"/>
               </lines>
             </method>
-            <method name="(anonymous_18)" hits="8" signature="()V">
+            <method name="(anonymous_18)" hits="14" signature="()V">
               <lines>
-                <line number="193" hits="8"/>
+                <line number="193" hits="14"/>
               </lines>
             </method>
-            <method name="(anonymous_19)" hits="10" signature="()V">
+            <method name="(anonymous_19)" hits="24" signature="()V">
               <lines>
-                <line number="194" hits="10"/>
+                <line number="194" hits="24"/>
               </lines>
             </method>
-            <method name="(anonymous_20)" hits="12" signature="()V">
+            <method name="(anonymous_20)" hits="44" signature="()V">
               <lines>
-                <line number="197" hits="12"/>
+                <line number="197" hits="44"/>
               </lines>
             </method>
             <method name="(anonymous_21)" hits="0" signature="()V">
@@ -362,14 +362,14 @@
                 <line number="219" hits="0"/>
               </lines>
             </method>
-            <method name="(anonymous_23)" hits="10" signature="()V">
+            <method name="(anonymous_23)" hits="24" signature="()V">
               <lines>
-                <line number="224" hits="10"/>
+                <line number="224" hits="24"/>
               </lines>
             </method>
-            <method name="(anonymous_24)" hits="0" signature="()V">
+            <method name="(anonymous_24)" hits="2" signature="()V">
               <lines>
-                <line number="247" hits="0"/>
+                <line number="247" hits="2"/>
               </lines>
             </method>
           </methods>
@@ -445,26 +445,26 @@
             <line number="184" hits="2" branch="false"/>
             <line number="189" hits="2" branch="false"/>
             <line number="190" hits="2" branch="false"/>
-            <line number="194" hits="8" branch="false"/>
-            <line number="195" hits="10" branch="false"/>
-            <line number="196" hits="10" branch="false"/>
-            <line number="197" hits="12" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="199" hits="10" branch="false"/>
-            <line number="207" hits="10" branch="true" condition-coverage="100% (4/4)"/>
+            <line number="194" hits="14" branch="false"/>
+            <line number="195" hits="24" branch="false"/>
+            <line number="196" hits="24" branch="false"/>
+            <line number="197" hits="44" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="199" hits="24" branch="false"/>
+            <line number="207" hits="24" branch="true" condition-coverage="100% (4/4)"/>
             <line number="208" hits="2" branch="false"/>
             <line number="209" hits="2" branch="true" condition-coverage="50% (1/2)"/>
             <line number="211" hits="0" branch="true" condition-coverage="0% (0/2)"/>
-            <line number="214" hits="10" branch="false"/>
+            <line number="214" hits="24" branch="false"/>
             <line number="219" hits="0" branch="false"/>
             <line number="220" hits="0" branch="false"/>
-            <line number="225" hits="10" branch="true" condition-coverage="28.57142857142857% (2/7)"/>
-            <line number="227" hits="4" branch="false"/>
+            <line number="225" hits="24" branch="true" condition-coverage="71.42857142857143% (5/7)"/>
+            <line number="227" hits="10" branch="false"/>
             <line number="229" hits="0" branch="false"/>
-            <line number="232" hits="0" branch="false"/>
-            <line number="234" hits="6" branch="false"/>
-            <line number="236" hits="0" branch="false"/>
+            <line number="232" hits="2" branch="false"/>
+            <line number="234" hits="10" branch="false"/>
+            <line number="236" hits="2" branch="false"/>
             <line number="238" hits="0" branch="false"/>
-            <line number="248" hits="0" branch="true" condition-coverage="0% (0/4)"/>
+            <line number="248" hits="2" branch="true" condition-coverage="75% (3/4)"/>
           </lines>
         </class>
         <class name="KubernetesParser.js" filename="src/parser/KubernetesParser.js" line-rate="0.6734" branch-rate="0.5333">
@@ -594,9 +594,9 @@
         </class>
       </classes>
     </package>
-    <package name="src.render" line-rate="0.34450000000000003" branch-rate="0.23329999999999998">
+    <package name="src.render" line-rate="0.3529" branch-rate="0.25">
       <classes>
-        <class name="KubernetesRenderer.js" filename="src/render/KubernetesRenderer.js" line-rate="0.34450000000000003" branch-rate="0.23329999999999998">
+        <class name="KubernetesRenderer.js" filename="src/render/KubernetesRenderer.js" line-rate="0.3529" branch-rate="0.25">
           <methods>
             <method name="(anonymous_0)" hits="1" signature="()V">
               <lines>
@@ -618,14 +618,14 @@
                 <line number="41" hits="1"/>
               </lines>
             </method>
-            <method name="(anonymous_4)" hits="3" signature="()V">
+            <method name="(anonymous_4)" hits="6" signature="()V">
               <lines>
-                <line number="59" hits="3"/>
+                <line number="59" hits="6"/>
               </lines>
             </method>
-            <method name="(anonymous_5)" hits="4" signature="()V">
+            <method name="(anonymous_5)" hits="11" signature="()V">
               <lines>
-                <line number="60" hits="4"/>
+                <line number="60" hits="11"/>
               </lines>
             </method>
             <method name="(anonymous_6)" hits="1" signature="()V">
@@ -725,18 +725,18 @@
             <line number="53" hits="1" branch="false"/>
             <line number="54" hits="1" branch="false"/>
             <line number="56" hits="1" branch="false"/>
-            <line number="60" hits="3" branch="false"/>
-            <line number="61" hits="4" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="62" hits="2" branch="false"/>
-            <line number="63" hits="2" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="64" hits="0" branch="false"/>
-            <line number="65" hits="2" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="60" hits="6" branch="false"/>
+            <line number="61" hits="11" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="62" hits="4" branch="false"/>
+            <line number="63" hits="7" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="64" hits="1" branch="false"/>
+            <line number="65" hits="6" branch="true" condition-coverage="100% (2/2)"/>
             <line number="66" hits="1" branch="true" condition-coverage="50% (1/2)"/>
             <line number="67" hits="1" branch="false"/>
             <line number="70" hits="0" branch="false"/>
-            <line number="72" hits="1" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="75" hits="1" branch="false"/>
-            <line number="77" hits="4" branch="false"/>
+            <line number="72" hits="5" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="75" hits="5" branch="false"/>
+            <line number="77" hits="11" branch="false"/>
             <line number="82" hits="1" branch="true" condition-coverage="50% (1/2)"/>
             <line number="83" hits="1" branch="false"/>
             <line number="85" hits="0" branch="true" condition-coverage="0% (0/2)"/>

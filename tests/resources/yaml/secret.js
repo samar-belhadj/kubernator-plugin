@@ -1,7 +1,8 @@
+import { Component, ComponentAttribute } from 'leto-modelizer-plugin-core';
+import KubernetesData from '../../../src/models/KubernetesData';
 import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
-import { Component, ComponentAttribute, DefaultData } from 'leto-modelizer-plugin-core';
 
-const pluginData = new DefaultData();
+const pluginData = new KubernetesData();
 const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 

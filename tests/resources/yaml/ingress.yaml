@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test-ingress
+  labels:
+    app.kubernetes.io/name: test-ingress
 spec:
   rules:
   - host: example.com
@@ -14,3 +16,4 @@ spec:
             name: test-service
             port:
               number: 80
+
