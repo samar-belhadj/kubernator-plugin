@@ -7,25 +7,35 @@ const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 
 const secretDef = pluginData.definitions.components.find(({ type }) => type === 'Secret');
-const secretMetadataDef = secretDef.definedAttributes.find(({ name }) => name === 'metadata');
+const MetadataDef = secretDef.definedAttributes.find(({ name }) => name === 'metadata');
 const secretDataDef = secretDef.definedAttributes.find(({ name }) => name === 'data');
 
-export default [
-new Component({
+const secretComponent = new Component({
   id: 'test-secret',
-  name: 'test-secret',
-  definition: secretDef,
   path: './secret.yaml',
+  definition: secretDef,
   attributes: [
     new ComponentAttribute({
       name: 'metadata',
       type: 'Object',
-      definition: secretMetadataDef,
+      definition: MetadataDef,
       value: [
         new ComponentAttribute({
-          name: 'name',
-          type: 'String',
-          value: 'test-secret',
+          name: 'labels',
+          type: 'Object',
+          definition: MetadataDef.definedAttributes.find(({ name }) => name === 'labels'), 
+          value: [
+            new ComponentAttribute({
+              name: 'app.kubernetes.io/name',
+              type: 'String',
+              definition: MetadataDef.definedAttributes.find(
+                ({ name }) => name === 'labels',
+              ).definedAttributes.find(
+                ({ name }) => name === 'app.kubernetes.io/name',
+              ),
+              value: 'test-secret',
+            }),
+          ],
         }),
       ],
     }),
@@ -43,15 +53,19 @@ new Component({
         new ComponentAttribute({
           name: 'username',
           type: 'String',
-          value: 'admin',
+          value: 'dXNlcm5hbWU=',
         }),
         new ComponentAttribute({
           name: 'password',
           type: 'String',
-          value: 'password123',
+          value: 'cGFzc3dvcmQ=',
         }),
       ],
     }),
   ],
-}),
-];
+});
+
+pluginData.components.push(secretComponent);
+
+export default pluginData;
+

@@ -8,25 +8,36 @@ metadata.parse();
 
 
 const configMapDef = pluginData.definitions.components.find(({ type }) => type === 'ConfigMap');
-const configMapMetadataDef = configMapDef.definedAttributes.find(({ name }) => name === 'metadata');
+const MetadataDef = configMapDef.definedAttributes.find(({ name }) => name === 'metadata');
 const configMapDataDef = configMapDef.definedAttributes.find(({ name }) => name === 'data');
 
-export default [
-new Component({
+
+const configmapComponent = new Component({
   id: 'test-configmap',
-  name: 'test-configmap',
-  definition: configMapDef,
   path: './configmap.yaml',
+  definition: configMapDef,
   attributes: [
     new ComponentAttribute({
       name: 'metadata',
       type: 'Object',
-      definition: configMapMetadataDef,
+      definition: MetadataDef,
       value: [
         new ComponentAttribute({
-          name: 'name',
-          type: 'String',
-          value: 'test-configmap',
+          name: 'labels',
+          type: 'Object',
+          definition: MetadataDef.definedAttributes.find(({ name }) => name === 'labels'), 
+          value: [
+            new ComponentAttribute({
+              name: 'app.kubernetes.io/name',
+              type: 'String',
+              definition: MetadataDef.definedAttributes.find(
+                ({ name }) => name === 'labels',
+              ).definedAttributes.find(
+                ({ name }) => name === 'app.kubernetes.io/name',
+              ),
+              value: 'test-configmap',
+            }),
+          ],
         }),
       ],
     }),
@@ -43,5 +54,6 @@ new Component({
       ],
     }),
   ],
-}),
-];
+});
+pluginData.components.push(configmapComponent);
+export default pluginData;

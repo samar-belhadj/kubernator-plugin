@@ -7,30 +7,66 @@ const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 
 const deploymentDef = pluginData.definitions.components.find(({ type }) => type === 'Deployment');
-const deploymentMetadataDef = deploymentDef.definedAttributes.find(({ name }) => name === 'metadata');
+const MetadataDef = deploymentDef.definedAttributes.find(({ name }) => name === 'metadata');
 const deploymentSpecDef = deploymentDef.definedAttributes.find(({ name }) => name === 'spec');
 
-export default [
-  new Component({
+const deploymentComponent = new Component({
     id: 'deployment',
-    definition: deploymentDef,
     path: './deployment.yml',
+    definition: deploymentDef,
     attributes: [
       new ComponentAttribute({
         name: 'metadata',
         type: 'Object',
-        definition: deploymentMetadataDef,
-        value: {
-          name: 'nginx-deployment',
-          labels: {
-            'app.kubernetes.io/name': 'nginx',
-          },
-        },
+        definition: MetadataDef,
+        value: [
+          new ComponentAttribute({
+            name: 'labels',
+            type: 'Object',
+            definition: MetadataDef.definedAttributes.find(({ name }) => name === 'labels'), 
+            value: [
+              new ComponentAttribute({
+                name: 'app.kubernetes.io/name',
+                type: 'String',
+                definition: MetadataDef.definedAttributes.find(
+                  ({ name }) => name === 'labels',
+                ).definedAttributes.find(
+                  ({ name }) => name === 'app.kubernetes.io/name',
+                ),
+                value: 'nginx',
+              }),
+            ],
+          }),  
+        ],
       }),
       new ComponentAttribute({
         name: 'spec',
         type: 'Object',
         definition: deploymentSpecDef,
+        attributes: [
+          new ComponentAttribute({
+            name: 'replicas',
+            type: 'Number',
+            definition: deploymentSpecDef.definedAttributes.find(({ name }) => name === 'replicas'),
+            value: [
+              new ComponentAttribute({
+                name: 'labels',
+                type: 'Object',
+                definition: MetadataDef.definedAttributes.find(({ name }) => name === 'labels'), 
+                value: [
+                  new ComponentAttribute({
+                    name: 'app.kubernetes.io/name',
+                    type: 'String',
+                    definition: MetadataDef.definedAttributes.find(
+                      ({ name }) => name === 'labels',
+                    ).definedAttributes.find(
+                      ({ name }) => name === 'app.kubernetes.io/name',
+                    ),
+                    value: 'nginx',
+                  }),
+                ],
+              }),  
+            ],
         value: {
           replicas: 3,
           selector: {
