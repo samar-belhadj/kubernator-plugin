@@ -225,6 +225,84 @@ describe('KubernetesParser', () => {
       // Add more assertions based on your specific expectations
     });
 
+    it('should return empty components for no input files', () => {
+      const pluginData = new KubernetesData();
+      const parser = new KubernetesParser(pluginData);
+      parser.parse();
+    
+      expect(pluginData.components).toEqual([]);
+    });
+    it('should exclude files without content from parsed components', () => {
+      const pluginData = new KubernetesData();
+      const parser = new KubernetesParser(pluginData);
+      const file1 = new FileInput({ path: 'file1.yaml', content: null });
+      const file2 = new FileInput({ path: 'file2.yaml', content: '' });
+    
+      parser.parse([file1, file2]);
+    
+      expect(pluginData.components).toEqual([]);
+    });
+
+
+    /*it('should handle parsing errors and store them in parseErrors', () => {
+      const pluginData = new KubernetesData();
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({ path: 'invalid.yaml',content: fs.readFileSync('tests/resources/yaml/invalid.yaml', 'utf8'),
+    });
+    
+      parser.parse([file]);
+    
+      expect(pluginData.parseErrors.length).toBeGreaterThan(0);
+     // expect(pluginData.parseErrors).toHaveLength(1);
+      expect(pluginData.parseErrors[0].path).toBe('./invalid.yaml');
+      // Add assertions based on the expected parsing errors
+    });
+*/
+it('should handle duplicate component names', () => {
+  const pluginData = new KubernetesData();
+  const parser = new KubernetesParser(pluginData);
+  const files = [
+    new FileInput({
+      path: './deployment1.yaml',
+      content: 'valid yaml content for deployment 1',
+    }),
+    new FileInput({
+      path: './deployment2.yaml',
+      content: 'valid yaml content for deployment 2',
+    }),
+  ];
+
+  parser.parse(files);
+
+  const deploymentComponents = pluginData.components.filter(
+    (component) => component.definition.type === 'Deployment'
+  );
+  const uniqueNames = new Set(deploymentComponents.map((component) => component.name));
+
+  expect(uniqueNames.size).toEqual(deploymentComponents.length);
+});
+it('should parse metadata information', () => {
+  const pluginData = new KubernetesData();
+  const metadata = new KubernetesMetadata(pluginData);
+  const parser = new KubernetesParser(pluginData);
+  const files = [
+    new FileInput({
+      path: './deployment.yaml',
+      content: 'valid yaml content for deployment',
+    }),
+    new FileInput({
+      path: './service.yaml',
+      content: 'valid yaml content for service',
+    }),
+  ];
+
+  metadata.parse();
+  parser.parse(files);
+
+  expect(metadata.someMetadataProperty).toEqual(expectedValue);
+  // Add more assertions to validate other metadata properties
+});
+
 
 
   });
