@@ -1,90 +1,156 @@
-import fs from 'fs';
-import KubernetesParser from 'src/parser/KubernetesParser';
-import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
-import KubernetesData from 'src/models/KubernetesData';
-import { FileInput, FileInformation, DefaultData} from 'leto-modelizer-plugin-core';
-import deployment from 'tests/resources/yaml/deployment';
-import service from 'tests/resources/yaml/service';
-import secret from 'tests/resources/yaml/secret';
-import ingress from 'tests/resources/yaml/ingress';
-import configmap from 'tests/resources/yaml/configmap';
-
-describe('Test KubernetesParser', () => {
-  describe('Test functions', () => {
-    describe('Test function: isParsable', () => {
-      const parser = new KubernetesParser();
+import KubernetesListener from 'src/parser/KubernetesListener';
+import { Parser } from 'webpack';
 
 
-      it('Should return true on .yml file', () => {
-
-        expect(parser.isParsable(new FileInformation({
-          path: 'simple.yml',
-        }))).toBeTruthy();
-
+describe('Test KubernatorParser', () => {
+    describe('Test functions', () => {
+      describe('Test function: lidyToLetoType', () => {
+        it('Should return true on .yaml file', () => {
+          const listener = new KubernetesListener();
+          expect(listener.lidyToLetoType('string')).toBe('String');
+          expect(listener.lidyToLetoType('boolean')).toBe('Boolean');
+          expect(listener.lidyToLetoType('int')).toBe('Number');
+          expect(listener.lidyToLetoType('float')).toBe('Number');
+          expect(listener.lidyToLetoType('map')).toBe('Object');
+          expect(listener.lidyToLetoType('list')).toBe('Array');
+          expect(listener.lidyToLetoType('something else')).toBe(null);
+        });
+      });
+      describe('Test function: exit_root', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_root({ value: 'value does not have version' })).not.toBeDefined();
+        });
       });
 
-      it('Should return false on file that is not a YAML file', () => {
-
-        expect(parser.isParsable(new FileInformation({
-          path: 'deployment.js',
-        }))).toBeFalsy();
+      describe('Test function: exit_deploymentSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_deploymentSpec(undefined)).not.toBeDefined();
+        });
       });
-      
+  
+      describe('Test function: exit_podSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_podSpec(undefined)).not.toBeDefined();
+        });
+      });
+  
+      describe('Test function: exit_statefulSetSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_statefulSetSpec(undefined)).not.toBeDefined();
+        });
+      });
+  
+      describe('Test function: exit_cronJobSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_cronJobSpec(undefined)).not.toBeDefined();
+        });
+      });
+  
+      describe('Test function: exit_jobSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_cronJobSpec(undefined)).not.toBeDefined();
+        });
+      });
+      describe('Test function: exit_cronJobSpec', () => {
+        it('Should do nothing if not rootNode.value.version', () => {
+          const listener = new KubernetesListener();
+          expect(listener.exit_cronJobSpec(undefined)).not.toBeDefined();
+        });
+      });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+Parser
+
+
+
+
+
+
+
+
+
+describe('convertSelectorAttributesToLinks', () => {
+  it('should convert selector attributes to links for service components', () => {
+    const pluginData = new KubernetesData();
+    const metadata = new KubernetesMetadata(pluginData);
+    metadata.parse();
+
+    const parser = new KubernetesParser(pluginData);
+    const file = new FileInput({
+      path: './service.yaml',
+      content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
     });
 
-    describe('Test function: parse', () => {
-      it('Should set empty components without input files', () => {
-        const pluginData = new DefaultData();
-        const parser = new KubernetesParser(pluginData);
-        parser.parse();
+    parser.parse([file]);
+    parser.convertSelectorAttributesToLinks();
 
-        expect(pluginData.components).not.toBeNull();
-        expect(pluginData.components.length).toEqual(0);
-      });
+    const services = pluginData.getComponentsByType('Service');
+    console.log(services);
+    services.forEach((service) => {
+      const selectorAttribute = service.getAttributeByName('selector');
+      console.log(selectorAttribute);
 
-      it('Should set empty components with files without content', () => {
-        const pluginData = new DefaultData();
-        const parser = new KubernetesParser(pluginData);
-        parser.parse([
-          new FileInformation({ path: 'a', content: null }),
-          new FileInformation({ path: 'a', content: '' }),
-        ]);
+      if (selectorAttribute) {
+        const pods = pluginData.getComponentsByType('Pod');
+        const expectedLinks = pods
+          .filter((pod) => {
+            const podLabelsAttribute = pod
+              .getAttributeByName('metadata')
+              ?.value?.find((attr) => attr.name === 'labels');
+            if (!podLabelsAttribute) return false;
+            const selectorLabels = parser.convertObjectAttributeToJsObject(selectorAttribute);
+            const podLabels = parser.convertObjectAttributeToJsObject(podLabelsAttribute);
+            const selectorLabelsKeys = Object.keys(selectorLabels);
+            return (
+              selectorLabelsKeys.length &&
+              selectorLabelsKeys.every((key) => selectorLabels[key] === podLabels[key])
+            );
+          })
+          .map((pod) => pod.id);
+          console.log(selectorAttribute.value);
+          console.log(expectedLinks);
 
-        expect(pluginData.components).not.toBeNull();
-        expect(pluginData.components.length).toEqual(0);
-      });
 
-      it('Parse service.yaml should set valid component', () => {
-        const pluginData = new KubernetesData();
-        const metadata = new KubernetesMetadata(pluginData);
-        metadata.parse();
-
-        const parser = new KubernetesParser(pluginData);
-        const file = new FileInput({
-          path: './service.yaml',
-          content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
-        });
-
-        parser.parse([file]);
-
-        expect(pluginData.components).toEqual(service.components);
-      });
-
-     /* it('Parse deployment.yml should set valid component', () => {
-        const pluginData = new KubernetesData();
-        const metadata = new KubernetesMetadata(pluginData);
-        metadata.parse();
-
-        const parser = new KubernetesParser(pluginData);
-        const file = new FileInput({
-          path: './deployment.yml',
-          content: fs.readFileSync('tests/resources/yaml/deployment.yml', 'utf8'),
-        });
-
-        parser.parse([file]);
-
-        expect(pluginData.components).toEqual(deployment.components);
-      });*/
+        expect(selectorAttribute.value).toEqual(expectedLinks);
+      }
     });
   });
-});
+
+ /* it('should not convert selector attributes to links for PersistentVolumeClaim components', () => {
+    const pluginData = new KubernetesData();
+    const metadata = new KubernetesMetadata(pluginData);
+    metadata.parse();
+
+    const parser = new KubernetesParser(pluginData);
+    const file = new FileInput({
+      path: './pvc.yaml',
+      content: fs.readFileSync('tests/resources/yaml/pvc.yaml', 'utf8'),
+    });
+
+    parser.parse([file]);
+    parser.convertSelectorAttributesToLinks();
+
+    const pvcs = pluginData.getComponentsByType('PersistentVolumeClaim');
+
+    pvcs.forEach((pvc) => {
+      const selectorAttribute = pvc.getAttributeByName('selector');
+      expect(selectorAttribute).toBeUndefined();
+    });
+  });*/

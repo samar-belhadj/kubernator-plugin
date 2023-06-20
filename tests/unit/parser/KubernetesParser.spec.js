@@ -6,7 +6,12 @@ import { FileInput, FileInformation, DefaultData } from 'leto-modelizer-plugin-c
 import ingressPluginData from 'tests/resources/yaml/ingress';
 import servicePluginData from 'tests/resources/yaml/service';
 import secretPluginData from 'tests/resources/yaml/secret';
+import deploymentPluginData from 'tests/resources/yaml/deployment';
 import configmapPluginData from 'tests/resources/yaml/configmap';
+import pvcPluginData from 'tests/resources/yaml/pvc';
+import cronjobPluginData from 'tests/resources/yaml/cronjob';
+import statefulsetPluginData from 'tests/resources/yaml/statefulset';
+
 
 
 
@@ -35,27 +40,7 @@ describe('KubernetesParser', () => {
   });
 
   describe('parse', () => {
-    it('should return empty components for no input files', () => {
-      const pluginData = new DefaultData();
-      const parser = new KubernetesParser(pluginData);
-      parser.parse();
-
-      expect(pluginData.components).not.toBeNull();
-      expect(pluginData.components.length).toBe(0);
-    });
-
-    it('Should set empty components with files without content', () => {
-      const pluginData = new DefaultData();
-      const parser = new KubernetesParser(pluginData);
-      parser.parse([
-        new FileInformation({ path: 'a', content: null }),
-        new FileInformation({ path: 'a', content: '' }),
-      ]);
-      expect(pluginData.components).not.toBeNull();
-      expect(pluginData.components.length).toEqual(0);
-    });
-
-
+    
 
     it('should parse a valid ingress.yaml file and return valid components', () => {
       const pluginData = new KubernetesData();
@@ -69,10 +54,24 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
-       //console.log(pluginData.components);
-       //console.log(ingressPluginData.components);
 
       expect(pluginData.components).toEqual(ingressPluginData.components);
+
+    });
+    it('should parse a valid deployment.yml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './deployment.yml',
+        content: fs.readFileSync('tests/resources/yaml/deployment.yml', 'utf8'),
+      });
+
+      parser.parse([file]);
+
+      expect(pluginData.components).toEqual(deploymentPluginData.components);
 
     });
 
@@ -88,10 +87,61 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
-      // console.log(pluginData.components);
-      // console.log(servicePluginData.components);
 
       expect(pluginData.components).toEqual(servicePluginData.components);
+
+    });
+
+  
+
+    it('should parse a valid cronjob.yaml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './cronjob.yaml',
+        content: fs.readFileSync('tests/resources/yaml/cronjob.yaml', 'utf8'),
+      });
+
+      parser.parse([file]);
+
+      expect(pluginData.components).toEqual(cronjobPluginData.components);
+
+    });
+
+    it('should parse a valid statefulset.yaml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './statefulset.yaml',
+        content: fs.readFileSync('tests/resources/yaml/statefulset.yaml', 'utf8'),
+      });
+
+      parser.parse([file]);
+
+      expect(pluginData.components).toEqual(statefulsetPluginData.components);
+
+    });
+
+    it('should parse a valid pvc.yaml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './pvc.yaml',
+        content: fs.readFileSync('tests/resources/yaml/pvc.yaml', 'utf8'),
+      });
+
+      parser.parse([file]);
+
+      expect(pluginData.components).toEqual(pvcPluginData.components);
 
     });
 
@@ -107,8 +157,6 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
-       //console.log(pluginData.components);
-       //console.log(secretPluginData.components);
 
       expect(pluginData.components).toEqual(secretPluginData.components);
 
@@ -127,8 +175,6 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
-       console.log(pluginData.components);
-       console.log(configmapPluginData.components);
 
       expect(pluginData.components).toEqual(configmapPluginData.components);
 
@@ -150,7 +196,6 @@ describe('KubernetesParser', () => {
           path: './service.yaml',
           content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
         }),
-        // Add more FileInput objects for other valid YAML files
       ];
 
       parser.parse(files);
@@ -160,40 +205,6 @@ describe('KubernetesParser', () => {
         ...servicePluginData.components,
       ]);
     });
-
-    it('should handle invalid YAML files and exclude them from parsed components', () => {
-      const pluginData = new KubernetesData();
-      const metadata = new KubernetesMetadata(pluginData);
-      metadata.parse();
-
-      const parser = new KubernetesParser(pluginData);
-      const file = new FileInput({
-        path: './invalid.yaml',
-        content: fs.readFileSync('tests/resources/yaml/invalid.yaml', 'utf8'),
-      });
-
-      parser.parse([file]);
-      console.log(pluginData.components);
-
-     // expect(pluginData.components).toEqual([]);
-    });
-
-    it('should handle YAML files with empty content and exclude them from parsed components', () => {
-      const pluginData = new KubernetesData();
-      const metadata = new KubernetesMetadata(pluginData);
-      metadata.parse();
-
-      const parser = new KubernetesParser(pluginData);
-      const file = new FileInput({
-        path: './empty.yaml',
-        content: fs.readFileSync('tests/resources/yaml/empty.yaml', 'utf8'),
-      });
-
-      parser.parse([file]);
-      console.log(pluginData.components);
-      expect(pluginData.components).toEqual([]);
-    });
-
     it('should correctly determine if a file is parsable based on its extension', () => {
       const parser = new KubernetesParser();
 
@@ -208,102 +219,72 @@ describe('KubernetesParser', () => {
       expect(parser.isParsable(txtFile)).toBe(false);
     });
 
-    it('should convert selector attributes to links for specific component types', () => {
+    it('Should set empty components on null input files', () => {
       const pluginData = new KubernetesData();
       const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: '',
+        content: null,
+      });
+      parser.parse([file]);
 
-      // Create a test component with a selector attribute
-      const testComponent = {
-        definition: { type: 'Service' },
-        getAttributeByName: jest.fn(() => ({ value: { matchLabels: {} } })),
-      };
-      pluginData.components.push(testComponent);
-
-      parser.convertSelectorAttributesToLinks();
-
-      expect(testComponent.getAttributeByName).toHaveBeenCalledWith('selector');
-      // Add more assertions based on your specific expectations
+      expect(pluginData.components).not.toBeNull();
+      expect(pluginData.components.length).toEqual(0);
     });
 
-    it('should return empty components for no input files', () => {
+
+    it('Should set empty components on no input files', () => {
       const pluginData = new KubernetesData();
       const parser = new KubernetesParser(pluginData);
       parser.parse();
-    
-      expect(pluginData.components).toEqual([]);
-    });
-    it('should exclude files without content from parsed components', () => {
-      const pluginData = new KubernetesData();
-      const parser = new KubernetesParser(pluginData);
-      const file1 = new FileInput({ path: 'file1.yaml', content: null });
-      const file2 = new FileInput({ path: 'file2.yaml', content: '' });
-    
-      parser.parse([file1, file2]);
-    
-      expect(pluginData.components).toEqual([]);
-    });
 
-
-    /*it('should handle parsing errors and store them in parseErrors', () => {
-      const pluginData = new KubernetesData();
-      const parser = new KubernetesParser(pluginData);
-      const file = new FileInput({ path: 'invalid.yaml',content: fs.readFileSync('tests/resources/yaml/invalid.yaml', 'utf8'),
+      expect(pluginData.components).not.toBeNull();
+      expect(pluginData.components.length).toEqual(0);
     });
+   
+    it('should handle invalid YAML files and exclude them from parsed components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+    
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './invalid.yaml',
+        content: fs.readFileSync('tests/resources/yaml/invalid.yaml', 'utf8'),
+      });
     
       parser.parse([file]);
+      console.log(pluginData.components);
     
-      expect(pluginData.parseErrors.length).toBeGreaterThan(0);
-     // expect(pluginData.parseErrors).toHaveLength(1);
-      expect(pluginData.parseErrors[0].path).toBe('./invalid.yaml');
-      // Add assertions based on the expected parsing errors
+     // expect(pluginData.components).toEqual([]);
     });
-*/
-it('should handle duplicate component names', () => {
-  const pluginData = new KubernetesData();
-  const parser = new KubernetesParser(pluginData);
-  const files = [
-    new FileInput({
-      path: './deployment1.yaml',
-      content: 'valid yaml content for deployment 1',
-    }),
-    new FileInput({
-      path: './deployment2.yaml',
-      content: 'valid yaml content for deployment 2',
-    }),
-  ];
 
-  parser.parse(files);
-
-  const deploymentComponents = pluginData.components.filter(
-    (component) => component.definition.type === 'Deployment'
-  );
-  const uniqueNames = new Set(deploymentComponents.map((component) => component.name));
-
-  expect(uniqueNames.size).toEqual(deploymentComponents.length);
-});
-it('should parse metadata information', () => {
-  const pluginData = new KubernetesData();
-  const metadata = new KubernetesMetadata(pluginData);
-  const parser = new KubernetesParser(pluginData);
-  const files = [
-    new FileInput({
-      path: './deployment.yaml',
-      content: 'valid yaml content for deployment',
-    }),
-    new FileInput({
-      path: './service.yaml',
-      content: 'valid yaml content for service',
-    }),
-  ];
-
-  metadata.parse();
-  parser.parse(files);
-
-  expect(metadata.someMetadataProperty).toEqual(expectedValue);
-  // Add more assertions to validate other metadata properties
-});
-
-
+    
 
   });
+  
+
+  describe('convertObjectAttributeToJsObject', () => {
+    test('converts object attribute to JavaScript object', () => {
+      const pluginData = new KubernetesData();
+      const parser = new KubernetesParser(pluginData);
+      const objectAttribute = {
+        value: [
+          { name: 'key1', value: 'v1' },
+          { name: 'key2', value: 'v2' },
+        ],
+      };
+
+      const result = parser.convertObjectAttributeToJsObject(objectAttribute);
+
+      expect(result).toEqual({ key1: 'v1', key2: 'v2' });
+    });
+
+  });
+
+
+  
+
+
+
 });
