@@ -73,6 +73,34 @@ const pvcComponent = new Component({
 
           ],
         }),
+        new ComponentAttribute({
+          name: 'selector',
+          type: 'Object',
+          definition: pvcSpecDef.definedAttributes.find(
+            ({ name }) => name === 'selector',
+          ),
+          value: [
+            new ComponentAttribute({
+                name: 'matchLabels',
+                type: 'Object',
+                definition: pvcSpecDef.definedAttributes.find(
+                  ({ name }) => name === 'selector',
+                ).definedAttributes.find(
+                  ({ name }) => name === 'matchLabels',
+                ),
+                value: [
+                  new ComponentAttribute({
+                      name: 'release',
+                      type: 'String',
+                      value: 'stable',
+                  }),
+      
+                ],
+            }),
+
+          ],
+        }),
+
         
       ],
     }),

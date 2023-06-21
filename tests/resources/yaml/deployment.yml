@@ -13,4 +13,7 @@ spec:
       name: pod
       labels:
         app.kubernetes.io/name: pod
-    
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:1.4.0

@@ -6,19 +6,63 @@ const pluginData = new KubernetesData();
 const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 
+//const cmmountDef = pluginData.definitions.components.find(({ type }) => type === 'ConfigMapMount');
+
+
+const containerDef = pluginData.definitions.components.find(({ type }) => type === 'Container');
+
+
 const podDef = pluginData.definitions.components.find(({ type }) => type === 'Pod');
 const podMetadataDef = podDef.definedAttributes.find(({ name }) => name === 'metadata');
-const podSpecDef = podDef.definedAttributes.find(({ name }) => name === 'parentDeployment');
+const podSpecDef = podDef.definedAttributes.find(({ name }) => name === 'spec');
 
 const deploymentDef = pluginData.definitions.components.find(({ type }) => type === 'Deployment');
 const MetadataDef = deploymentDef.definedAttributes.find(({ name }) => name === 'metadata');
 const deploymentSpecDef = deploymentDef.definedAttributes.find(({ name }) => name === 'spec');
 
+/*const cmmountComponent = new Component({
+  id: 'config-map-mount',
+  path: null,
+  definition: cmmountDef,
+  attributes: [
+    
+  ],
+});*/
+
+/*const containerComponent = new Component({
+  id: 'nginx-container',
+  path: null,
+  definition: containerDef,
+  attributes: [
+
+    new ComponentAttribute({
+      name: 'image',
+      type: 'String',
+      definition: containerDef.definedAttributes.find(({ name }) => name === 'image'), 
+      value : 'nginx:1.4.0',
+    }),
+    new ComponentAttribute({
+      name: 'parent',
+      type: 'String',
+      definition: containerDef.definedAttributes.find(({ name }) => name === 'parent'), 
+      value : 'pod',
+    }),
+    
+  ],
+});
+
+*/
 const podComponent = new Component({
   id: 'pod',
   path: null,
   definition: podDef,
   attributes: [
+    new ComponentAttribute({
+          name: 'parentDeployment',
+          type: 'String',
+          definition: podDef.definedAttributes.find(({ name }) => name === 'parentDeployment'), 
+          value : 'nginx-deployment',
+    }),
     new ComponentAttribute({
       name: 'metadata',
       type: 'Object',
@@ -41,14 +85,18 @@ const podComponent = new Component({
             }),
           ],
         }),  
+        
       ],
     }),
+   
     new ComponentAttribute({
-      name: 'parentDeployment',
-      type: 'String',
+      name: 'spec',
+      type: 'Object',
+      containerRef: null,
       definition: podSpecDef,
-      value : 'nginx-deployment',
-    }),
+      value: [],
+    }),  
+    
   ],
 });
 
@@ -85,12 +133,15 @@ const deploymentComponent = new Component({
       new ComponentAttribute({
       name: 'spec',
       type: 'Object',
-      containerRef: 'Deployment',
+      containerRef: null,
       definition: deploymentSpecDef,
       value: [],
     }),  
     ],
 });
+
+//pluginData.components.push(cmmountComponent);
+//pluginData.components.push(containerComponent);
 pluginData.components.push(podComponent);
 pluginData.components.push(deploymentComponent);
 

@@ -70,8 +70,11 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
+      //console.log('*************************');
+      //console.log(pluginData.components);
+     // console.log(deploymentPluginData.components);
 
-      expect(pluginData.components).toEqual(deploymentPluginData.components);
+     expect(pluginData.components).toEqual(deploymentPluginData.components);
 
     });
 
@@ -140,6 +143,7 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
+
 
       expect(pluginData.components).toEqual(pvcPluginData.components);
 
@@ -254,9 +258,9 @@ describe('KubernetesParser', () => {
       });
     
       parser.parse([file]);
-      console.log(pluginData.components);
+      //console.log(pluginData.components);
     
-     // expect(pluginData.components).toEqual([]);
+     //expect(pluginData.components).toEqual([]);
     });
 
     
