@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
   labels:
-    app.kubernetes.io/name: nginx-deployment
+    app.kubernetes.io/name: nginx
 spec:
   selector:
     matchLabels:
@@ -17,3 +17,10 @@ spec:
       containers:
         - name: nginx-container
           image: nginx:1.4.0
+          volumeMounts:
+            - name: config-map-mount
+              mountPath: /mnt
+      volumes:
+        - name: config-map-mount
+          configMap:
+            name: test-configmap

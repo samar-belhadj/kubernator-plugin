@@ -116,27 +116,27 @@ class KubernetesListener {
       const volumeNode = volumeNodes.find(
         (volumeNode) => volumeNode.value.name.value === volumeName
       );
-      if (!volumeNode) {
+      /*if (!volumeNode) {
         // TODO: throw error
         return;
-      }
+      }*/
       const volumeSpecKeys = Object.keys(volumeNode.value).filter(
         (key) => volumeNode.value[key].type === 'map'
       );
-      if (volumeSpecKeys.length !== 1) {
+      /*if (volumeSpecKeys.length !== 1) {
         // TODO: throw error
         return;
-      }
+      }*/
       const volumeSpecKey = volumeSpecKeys[0];
       const volumeKind = {
         configMap: 'ConfigMapMount',
         secret: 'SecretMount',
         persistentVolumeClaim: 'PersistentVolumeClaimMount',
       }[volumeSpecKey];
-      if (!volumeKind) {
+      /*if (!volumeKind) {
         // TODO: throw error
         return;
-      }
+      }*/
       const volumeComponent = this.createComponentFromTree(
         volumeMountNode, 'others', volumeKind
       );

@@ -137,7 +137,11 @@ class KubernetesParser extends DefaultParser {
   }
 
   convertObjectAttributeToJsObject(objectAttribute) {
-    return objectAttribute.value.reduce((acc, {name, value}) => {
+    if (!Array.isArray(objectAttribute.value)) {
+      return {};
+    }
+  
+    return objectAttribute.value.reduce((acc, { name, value }) => {
       acc[name] = value;
       return acc;
     }, {});

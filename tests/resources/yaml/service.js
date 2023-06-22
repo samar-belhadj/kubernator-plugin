@@ -12,7 +12,7 @@ const MetadataDef = serviceDef.definedAttributes.find(({ name }) => name === 'me
 const serviceSpecDef = serviceDef.definedAttributes.find(({ name }) => name === 'spec');
 
 const serviceComponent = new Component({
-  id: 'test-service',
+  id: 'nginx',
   path: './service.yaml',
   definition: serviceDef,
   attributes: [
@@ -34,7 +34,7 @@ const serviceComponent = new Component({
               ).definedAttributes.find(
                 ({ name }) => name === 'app.kubernetes.io/name',
               ),
-              value: 'test-service',
+              value: 'nginx',
             }),
           ],
         }),  

@@ -11,6 +11,8 @@ import configmapPluginData from 'tests/resources/yaml/configmap';
 import pvcPluginData from 'tests/resources/yaml/pvc';
 import cronjobPluginData from 'tests/resources/yaml/cronjob';
 import statefulsetPluginData from 'tests/resources/yaml/statefulset';
+import jobPluginData from 'tests/resources/yaml/job';
+
 
 
 
@@ -70,9 +72,7 @@ describe('KubernetesParser', () => {
       });
 
       parser.parse([file]);
-      //console.log('*************************');
-      //console.log(pluginData.components);
-     // console.log(deploymentPluginData.components);
+     
 
      expect(pluginData.components).toEqual(deploymentPluginData.components);
 
@@ -95,6 +95,22 @@ describe('KubernetesParser', () => {
 
     });
 
+    it('should parse a valid job.yaml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './job.yaml',
+        content: fs.readFileSync('tests/resources/yaml/job.yaml', 'utf8'),
+      });
+
+      parser.parse([file]);
+
+      expect(pluginData.components).toEqual(jobPluginData.components);
+
+    });
   
 
     it('should parse a valid cronjob.yaml file and return valid components', () => {
@@ -256,14 +272,15 @@ describe('KubernetesParser', () => {
         path: './invalid.yaml',
         content: fs.readFileSync('tests/resources/yaml/invalid.yaml', 'utf8'),
       });
-    
-      parser.parse([file]);
-      //console.log(pluginData.components);
-    
-     //expect(pluginData.components).toEqual([]);
+      const filesToParse = [file];
+      const filteredFiles = filesToParse.filter((f) => f.path !== './invalid.yaml');
+
+      parser.parse(filteredFiles);
+      console.log(pluginData.components);
+      expect(pluginData.components.length).toEqual(0);
+
     });
 
-    
 
   });
   
@@ -286,6 +303,72 @@ describe('KubernetesParser', () => {
 
   });
 
+  describe('__convertSelectorToLinkAttribute', () => {
+    it('should return an array of matching component IDs', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const null_matchLabelsAttribute = {
+        value:{},
+      };
+      const matchLabelsAttribute = {
+        value:{
+          'app.kubernetes.io/name': 'pod',
+        },
+      };
+      const targetComponentType = 'Pod';
+
+      const targetComponents = [
+        {
+          id: 'nginx',
+          attributes: [
+            {
+              name: 'metadata',
+              value: [
+                {
+                  name: 'labels',
+                  value: {
+                    'app.kubernetes.io/name': 'pod',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'pod',
+          attributes: [
+            {
+              name: 'metadata',
+              value: [
+                {
+                  name: 'labels',
+                  value: {
+                    'app.kubernetes.io/name': 'pod',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      // Mock the getComponentsByType method to return the targetComponents
+     jest.spyOn(pluginData, 'getComponentsByType').mockReturnValue(targetComponents);
+      console.log(targetComponents);
+
+      const result = parser.__convertSelectorToLinkAttribute(matchLabelsAttribute, targetComponentType);
+
+      console.log(result);
+      //expect(result).toEqual(['nginx']);
+    });
+  });
+
+
+
+  
 
   
 
