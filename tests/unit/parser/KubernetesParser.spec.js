@@ -310,9 +310,20 @@ describe('KubernetesParser', () => {
       metadata.parse();
 
       const parser = new KubernetesParser(pluginData);
-      const null_matchLabelsAttribute = {
-        value:{},
-      };
+      const files = [
+        new FileInput({
+          path: './pod.yaml',
+          content: fs.readFileSync('tests/resources/yaml/pod.yaml', 'utf8'),
+        }),
+        new FileInput({
+          path: './service.yaml',
+          content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
+        }),
+      ];
+
+      parser.parse(files);
+
+     
       const matchLabelsAttribute = {
         value:{
           'app.kubernetes.io/name': 'pod',

@@ -20,9 +20,9 @@ class KubernetesMetadata extends DefaultMetadata {
    *
    * @returns {boolean} True if metadata is valid.
    */
-  validate() {
+  /*validate() {
     return true;
-  }
+  }*/
 
   /**
    * Parse all component definitions from metadata.

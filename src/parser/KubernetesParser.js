@@ -104,8 +104,7 @@ class KubernetesParser extends DefaultParser {
             // This plugin does not have a PersistentVolume resource,
             // so the selector should not be converted into a link attribute.
             break;
-          default:
-            throw new Error(`Unknown selector in component '${component.id}'.`);
+          
         }
       }
     });
@@ -121,9 +120,9 @@ class KubernetesParser extends DefaultParser {
           )?.value?.find(
             ({name}) => name === 'labels'
           );
-          if (!targetLabelsAttribute) {
+        /* if (!targetLabelsAttribute) {
             return false;
-          }
+          }*/
           const selectorLabels =
             this.convertObjectAttributeToJsObject(matchLabelsAttribute);
           const targetLabels =

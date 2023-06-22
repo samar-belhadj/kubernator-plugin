@@ -1,0 +1,14 @@
+import { getKubernatorMetadata } from 'tests/resources/metadata/getKubernetorMetadata';
+
+describe('Test KubernetesMetadata', () => {
+  describe('Test methods', () => {
+    describe('Test method: validate', () => {
+      it('Should return true on valid metadata', () => {
+        const metadata = getKubernatorMetadata('validMetadata', 'tests/resources/metadata/valid_others.json');
+        console.log(metadata.validate());
+        expect(metadata.validate()).toBeTruthy();
+      });
+      
+    });
+  });
+});

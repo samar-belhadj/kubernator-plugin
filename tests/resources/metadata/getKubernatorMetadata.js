@@ -6,7 +6,7 @@ import KubernetesData from 'src/models/KubernetesData';
  * Convert a JSON component definition object to a KubernetesComponentDefinition.
  * @param {string} metadataName - metadata name.
  * @param {string} metadataUrl - path to metadata JSON file.
- * @returns {KubernetesMetadata} DockerComposatorPluginMetadata instance containing metadata
+ * @returns {KubernetesMetadata} KubernetesMetadata instance containing metadata
  * from specified url.
  */
 export function getKubernetorMetadata(metadataName, metadataUrl) {
