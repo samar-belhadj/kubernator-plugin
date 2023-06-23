@@ -1,42 +1,1200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js">
+    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="5"/>
+  </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesListener.spec.js">
-    <testCase name="Test KubernatorParser Test functions Test function: lidyToLetoType Should return true on .yaml file" duration="3"/>
+    <testCase name="Test KubernatorParser Test functions Test function: lidyToLetoType Should return true on .yaml file" duration="5"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesData.spec.js">
-    <testCase name="KubernetesData addComponent should add a new component and return the generated ID" duration="7"/>
+    <testCase name="KubernetesData addComponent should add a new component and return the generated ID" duration="6"/>
     <testCase name="KubernetesData __createAttribute should create a new component attribute" duration="2"/>
     <testCase name="KubernetesData __createAttribute should return null for non-existent attribute definition" duration="1"/>
   </file>
-  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesComponentDefinition.spec.js">
-    <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="4"/>
-  </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/index.spec.js">
-    <testCase name="Test index of project Index should return KubernetesPlugin" duration="7"/>
-    <testCase name="Test index of project Index should return all needed objects" duration="1"/>
+    <testCase name="Test index of project Index should return KubernetesPlugin" duration="8"/>
+    <testCase name="Test index of project Index should return all needed objects" duration="2"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesPlugin.spec.js">
-    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="12"/>
+    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="6"/>
+  </file>
+  <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js">
+    <testCase name="KubernetesRenderer should render deployment files correctly" duration="31"/>
+    <testCase name="KubernetesRenderer should render service files correctly" duration="3"/>
+    <testCase name="KubernetesRenderer should render pod files correctly" duration="2"/>
+    <testCase name="KubernetesRenderer should render cronJob files correctly" duration="16"/>
+    <testCase name="KubernetesRenderer should render configMap files correctly" duration="3"/>
+    <testCase name="KubernetesRenderer should render pvc files correctly" duration="2"/>
+    <testCase name="KubernetesRenderer should render secret files correctly" duration="3"/>
+    <testCase name="KubernetesRenderer should format a deployment kubernetes component correctly" duration="1"/>
+    <testCase name="KubernetesRenderer should format a pod kubernetes component correctly" duration="1"/>
+    <testCase name="KubernetesRenderer should format a service kubernetes component correctly" duration="0"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js">
     <testCase name="KubernetesParser isParsable should return true for a YAML file" duration="2"/>
     <testCase name="KubernetesParser isParsable should return true for a YML file" duration="1"/>
-    <testCase name="KubernetesParser isParsable should return false for a non-YAML file" duration="0"/>
-    <testCase name="KubernetesParser parse should parse a valid ingress.yaml file and return valid components" duration="46"/>
-    <testCase name="KubernetesParser parse should parse a valid deployment.yml file and return valid components" duration="33"/>
-    <testCase name="KubernetesParser parse should parse a valid service.yaml file and return valid components" duration="12"/>
-    <testCase name="KubernetesParser parse should parse a valid job.yaml file and return valid components" duration="14"/>
-    <testCase name="KubernetesParser parse should parse a valid cronjob.yaml file and return valid components" duration="13"/>
-    <testCase name="KubernetesParser parse should parse a valid statefulset.yaml file and return valid components" duration="7"/>
-    <testCase name="KubernetesParser parse should parse a valid pvc.yaml file and return valid components" duration="8"/>
-    <testCase name="KubernetesParser parse should parse a valid secret.yaml file and return valid components" duration="16"/>
-    <testCase name="KubernetesParser parse should parse a valid configmap.yaml file and return valid components" duration="11"/>
-    <testCase name="KubernetesParser parse should parse multiple valid YAML files and return valid components" duration="22"/>
-    <testCase name="KubernetesParser parse should correctly determine if a file is parsable based on its extension" duration="1"/>
+    <testCase name="KubernetesParser isParsable should return false for a non-YAML file" duration="1"/>
+    <testCase name="KubernetesParser parse should parse a valid ingress.yaml file and return valid components" duration="59"/>
+    <testCase name="KubernetesParser parse should parse a valid deployment.yml file and return valid components" duration="40"/>
+    <testCase name="KubernetesParser parse should parse a valid deployment_test.yml file and return valid components" duration="207">
+      <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 254
++ Received  + 254
+
+@@ -25,371 +25,318 @@
+            "type": "String",
+            "url": null,
+          },
+          "name": "mountPath",
+          "type": "String",
+-         "value": "/mnt/pvc",
++         "value": "/mnt",
+        },
+        n {
+          "definition": t {
+            "containerRef": null,
+            "definedAttributes": Array [
+              t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Claim Name",
++               "displayName": "Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "PersistentVolumeClaim",
++               "linkRef": "ConfigMap",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "claimName",
++               "name": "name",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+                "type": "Link",
+                "url": null,
+              },
+-           ],
+-           "description": null,
+-           "displayName": "Persistent Volume Claim",
+-           "expanded": true,
+-           "linkColor": "black",
+-           "linkDashStyle": null,
+-           "linkRef": Array [],
+-           "linkType": null,
+-           "linkWidth": 2,
+-           "name": "persistentVolumeClaim",
+-           "required": true,
+-           "rules": Object {
+-             "max": null,
+-             "min": null,
+-             "regex": null,
+-             "values": null,
+-           },
+-           "type": "Object",
+-           "url": null,
+-         },
+-         "name": "persistentVolumeClaim",
+-         "type": "Object",
+-         "value": Array [
+-           n {
+-             "definition": t {
++             t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Claim Name",
++               "displayName": "Default Mode",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "PersistentVolumeClaim",
++               "linkRef": Array [],
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "claimName",
+-               "required": true,
++               "name": "defaultMode",
++               "required": false,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+-               "type": "Link",
++               "type": "Number",
+                "url": null,
+              },
+-             "name": "claimName",
+-             "type": "Link",
+-             "value": Array [
+-               "task-pv-volume",
+-             ],
+-           },
+-         ],
+-       },
+-       n {
+-         "definition": t {
+-           "containerRef": "Container",
++             t {
++               "containerRef": null,
++               "definedAttributes": Array [
++                 t {
++                   "containerRef": null,
++                   "definedAttributes": Array [
++                     t {
++                       "containerRef": null,
+                        "definedAttributes": Array [],
+                        "description": null,
+-           "displayName": "Parent",
++                       "displayName": "Key",
+                        "expanded": false,
+                        "linkColor": "black",
+                        "linkDashStyle": null,
+                        "linkRef": Array [],
+                        "linkType": null,
+                        "linkWidth": 2,
+-           "name": "parent",
++                       "name": "key",
+                        "required": true,
+                        "rules": Object {
+                          "max": null,
+                          "min": null,
+                          "regex": null,
+                          "values": null,
+                        },
+-           "type": "Reference",
+-           "url": null,
+-         },
+-         "name": "parent",
+                        "type": "String",
+-         "value": "nginx-container",
++                       "url": null,
+                      },
+-     ],
+-     "definition": KubernetesComponentDefinition {
+-       "apiVersion": "others",
+-       "childrenPerLine": null,
+-       "childrenTypes": Array [],
+-       "definedAttributes": Array [
+                      t {
+-           "containerRef": "Container",
++                       "containerRef": null,
+                        "definedAttributes": Array [],
+                        "description": null,
+-           "displayName": "Parent",
++                       "displayName": "Path",
+                        "expanded": false,
+                        "linkColor": "black",
+                        "linkDashStyle": null,
+                        "linkRef": Array [],
+                        "linkType": null,
+                        "linkWidth": 2,
+-           "name": "parent",
++                       "name": "path",
+                        "required": true,
+                        "rules": Object {
+                          "max": null,
+                          "min": null,
+                          "regex": null,
+                          "values": null,
+                        },
+-           "type": "Reference",
++                       "type": "String",
+                        "url": null,
+                      },
+                      t {
+                        "containerRef": null,
+-           "definedAttributes": Array [
+-             t {
+-               "containerRef": null,
+                        "definedAttributes": Array [],
+                        "description": null,
+-               "displayName": "Claim Name",
++                       "displayName": "Mode",
+                        "expanded": false,
+                        "linkColor": "black",
+                        "linkDashStyle": null,
+-               "linkRef": "PersistentVolumeClaim",
++                       "linkRef": Array [],
+                        "linkType": null,
+                        "linkWidth": 2,
+-               "name": "claimName",
+-               "required": true,
++                       "name": "mode",
++                       "required": false,
+                        "rules": Object {
+                          "max": null,
+                          "min": null,
+                          "regex": null,
+                          "values": null,
+                        },
+-               "type": "Link",
++                       "type": "Number",
+                        "url": null,
+                      },
+                    ],
+                    "description": null,
+-           "displayName": "Persistent Volume Claim",
+-           "expanded": true,
++                   "displayName": null,
++                   "expanded": false,
+                    "linkColor": "black",
+                    "linkDashStyle": null,
+                    "linkRef": Array [],
+                    "linkType": null,
+                    "linkWidth": 2,
+-           "name": "persistentVolumeClaim",
+-           "required": true,
++                   "name": null,
++                   "required": false,
+                    "rules": Object {
+                      "max": null,
+                      "min": null,
+                      "regex": null,
+                      "values": null,
+                    },
+                    "type": "Object",
+                    "url": null,
+                  },
+-         t {
+-           "containerRef": null,
+-           "definedAttributes": Array [],
++               ],
+                "description": null,
+-           "displayName": "Mount Path",
++               "displayName": "Items",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+                "linkRef": Array [],
+                "linkType": null,
+                "linkWidth": 2,
+-           "name": "mountPath",
+-           "required": true,
++               "name": "items",
++               "required": false,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+-           "type": "String",
++               "type": "Array",
+                "url": null,
+              },
+              t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-           "displayName": "Sub Path",
++               "displayName": "Optional",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+                "linkRef": Array [],
+                "linkType": null,
+                "linkWidth": 2,
+-           "name": "subPath",
++               "name": "optional",
+                "required": false,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+-           "type": "String",
++               "type": "Boolean",
+                "url": null,
+              },
+-         t {
+-           "containerRef": null,
+-           "definedAttributes": Array [],
++           ],
+            "description": null,
+-           "displayName": "Sub Path Expr",
+-           "expanded": false,
++           "displayName": "Config Map",
++           "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "subPathExpr",
+-           "required": false,
++           "name": "configMap",
++           "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "String",
++           "type": "Object",
+            "url": null,
+          },
+-         t {
++         "name": "configMap",
++         "type": "Object",
++         "value": Array [
++           n {
++             "definition": t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-           "displayName": "Mount Propagation",
++               "displayName": "Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-           "linkRef": Array [],
++               "linkRef": "ConfigMap",
+                "linkType": null,
+                "linkWidth": 2,
+-           "name": "mountPropagation",
+-           "required": false,
++               "name": "name",
++               "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+-             "values": Array [
+-               "None",
+-               "HostToContainer",
+-               "Bidirectional",
++                 "values": null,
++               },
++               "type": "Link",
++               "url": null,
++             },
++             "name": "name",
++             "type": "Link",
++             "value": Array [
++               "test-configmap",
+              ],
+            },
+-           "type": "String",
+-           "url": null,
++         ],
+        },
+-         t {
+-           "containerRef": null,
++       n {
++         "definition": t {
++           "containerRef": "Container",
+            "definedAttributes": Array [],
+            "description": null,
+-           "displayName": "Read Only",
++           "displayName": "Parent",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "readOnly",
+-           "required": false,
++           "name": "parent",
++           "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "Boolean",
++           "type": "Reference",
+            "url": null,
+          },
++         "name": "parent",
++         "type": "String",
++         "value": "nginx-container",
++       },
+      ],
+-       "description": null,
+-       "displayName": null,
+-       "displayType": null,
+-       "icon": "resources/unlabeled/vol",
+-       "isContainer": false,
+-       "model": "DefaultModel",
+-       "parentTypes": Array [
+-         "Container",
+-       ],
+-       "preventChildrenMovement": false,
+-       "type": "PersistentVolumeClaimMount",
+-       "url": null,
+-     },
+-     "drawOption": null,
+-     "id": "pvc-mount",
+-     "name": null,
+-     "path": null,
+-   },
+-   s {
+-     "__class": "Component",
+-     "attributes": Array [
+-       n {
+-         "definition": t {
+-           "containerRef": null,
++     "definition": KubernetesComponentDefinition {
++       "apiVersion": "others",
++       "childrenPerLine": null,
++       "childrenTypes": Array [],
++       "definedAttributes": Array [
++         t {
++           "containerRef": "Container",
+            "definedAttributes": Array [],
+            "description": null,
+-           "displayName": "Mount Path",
++           "displayName": "Parent",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "mountPath",
++           "name": "parent",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "String",
++           "type": "Reference",
+            "url": null,
+          },
+-         "name": "mountPath",
+-         "type": "String",
+-         "value": "/mnt/secret",
+-       },
+-       n {
+-         "definition": t {
++         t {
+            "containerRef": null,
+            "definedAttributes": Array [
+              t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Secret Name",
++               "displayName": "Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "Secret",
++               "linkRef": "ConfigMap",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "secretName",
++               "name": "name",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+@@ -554,338 +501,391 @@
+                "type": "Boolean",
+                "url": null,
+              },
+            ],
+            "description": null,
+-           "displayName": "Secret",
++           "displayName": "Config Map",
+            "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "secret",
++           "name": "configMap",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+            "type": "Object",
+            "url": null,
+          },
+-         "name": "secret",
+-         "type": "Object",
+-         "value": Array [
+-           n {
+-             "definition": t {
++         t {
+            "containerRef": null,
+            "definedAttributes": Array [],
+            "description": null,
+-               "displayName": "Secret Name",
++           "displayName": "Mount Path",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+-               "linkRef": "Secret",
++           "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-               "name": "secretName",
++           "name": "mountPath",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-               "type": "Link",
++           "type": "String",
+            "url": null,
+          },
+-             "name": "secretName",
+-             "type": "Link",
+-             "value": Array [
+-               "test-secret",
++       ],
++       "description": null,
++       "displayName": null,
++       "displayType": null,
++       "icon": "resources/unlabeled/vol",
++       "isContainer": false,
++       "model": "DefaultModel",
++       "parentTypes": Array [
++         "Container",
+        ],
++       "preventChildrenMovement": false,
++       "type": "ConfigMapMount",
++       "url": null,
+      },
+-         ],
++     "drawOption": null,
++     "id": "config-map-mount",
++     "name": null,
++     "path": null,
+    },
++   s {
++     "__class": "Component",
++     "attributes": Array [
+        n {
+          "definition": t {
+-           "containerRef": "Container",
++           "containerRef": null,
+            "definedAttributes": Array [],
+            "description": null,
+-           "displayName": "Parent",
++           "displayName": "Mount Path",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "parent",
++           "name": "mountPath",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "Reference",
++           "type": "String",
+            "url": null,
+          },
+-         "name": "parent",
++         "name": "mountPath",
+          "type": "String",
+-         "value": "nginx-container",
++         "value": "/mnt/pvc",
+        },
+-     ],
+-     "definition": KubernetesComponentDefinition {
+-       "apiVersion": "others",
+-       "childrenPerLine": null,
+-       "childrenTypes": Array [],
++       n {
++         "definition": t {
++           "containerRef": null,
+            "definedAttributes": Array [
+              t {
+-           "containerRef": "Container",
++               "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-           "displayName": "Parent",
++               "displayName": "Claim Name",
+                "expanded": false,
++               "linkColor": "black",
++               "linkDashStyle": null,
++               "linkRef": "PersistentVolumeClaim",
++               "linkType": null,
++               "linkWidth": 2,
++               "name": "claimName",
++               "required": true,
++               "rules": Object {
++                 "max": null,
++                 "min": null,
++                 "regex": null,
++                 "values": null,
++               },
++               "type": "Link",
++               "url": null,
++             },
++           ],
++           "description": null,
++           "displayName": "Persistent Volume Claim",
++           "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "parent",
++           "name": "persistentVolumeClaim",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "Reference",
++           "type": "Object",
+            "url": null,
+          },
+-         t {
++         "name": "persistentVolumeClaim",
++         "type": "Object",
++         "value": Array [
++           n {
++             "definition": t {
+                "containerRef": null,
+-           "definedAttributes": Array [
+-             t {
+-               "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Secret Name",
++               "displayName": "Claim Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "Secret",
++               "linkRef": "PersistentVolumeClaim",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "secretName",
++               "name": "claimName",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+                "type": "Link",
+                "url": null,
+              },
+-             t {
+-               "containerRef": null,
++             "name": "claimName",
++             "type": "Link",
++             "value": Array [
++               "task-pv-volume",
++             ],
++           },
++         ],
++       },
++       n {
++         "definition": t {
++           "containerRef": "Container",
+            "definedAttributes": Array [],
+            "description": null,
+-               "displayName": "Default Mode",
++           "displayName": "Parent",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-               "name": "defaultMode",
+-               "required": false,
++           "name": "parent",
++           "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-               "type": "Number",
++           "type": "Reference",
+            "url": null,
+          },
+-             t {
+-               "containerRef": null,
+-               "definedAttributes": Array [
+-                 t {
+-                   "containerRef": null,
++         "name": "parent",
++         "type": "String",
++         "value": "nginx-container",
++       },
++     ],
++     "definition": KubernetesComponentDefinition {
++       "apiVersion": "others",
++       "childrenPerLine": null,
++       "childrenTypes": Array [],
+        "definedAttributes": Array [
+          t {
+-                       "containerRef": null,
++           "containerRef": "Container",
+            "definedAttributes": Array [],
+            "description": null,
+-                       "displayName": "Key",
++           "displayName": "Parent",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-                       "name": "key",
++           "name": "parent",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-                       "type": "String",
++           "type": "Reference",
+            "url": null,
+          },
+          t {
+            "containerRef": null,
++           "definedAttributes": Array [
++             t {
++               "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-                       "displayName": "Path",
++               "displayName": "Claim Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-                       "linkRef": Array [],
++               "linkRef": "PersistentVolumeClaim",
+                "linkType": null,
+                "linkWidth": 2,
+-                       "name": "path",
++               "name": "claimName",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+-                       "type": "String",
++               "type": "Link",
+                "url": null,
+              },
+-                     t {
+-                       "containerRef": null,
+-                       "definedAttributes": Array [],
++           ],
+            "description": null,
+-                       "displayName": "Mode",
+-                       "expanded": false,
++           "displayName": "Persistent Volume Claim",
++           "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-                       "name": "mode",
+-                       "required": false,
++           "name": "persistentVolumeClaim",
++           "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-                       "type": "Number",
++           "type": "Object",
+            "url": null,
+          },
+-                   ],
++         t {
++           "containerRef": null,
++           "definedAttributes": Array [],
+            "description": null,
+-                   "displayName": null,
++           "displayName": "Mount Path",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-                   "name": null,
+-                   "required": false,
++           "name": "mountPath",
++           "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-                   "type": "Object",
++           "type": "String",
+            "url": null,
+          },
+-               ],
++         t {
++           "containerRef": null,
++           "definedAttributes": Array [],
+            "description": null,
+-               "displayName": "Items",
++           "displayName": "Sub Path",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-               "name": "items",
++           "name": "subPath",
+            "required": false,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-               "type": "Array",
++           "type": "String",
+            "url": null,
+          },
+          t {
+            "containerRef": null,
+            "definedAttributes": Array [],
+            "description": null,
+-               "displayName": "Optional",
++           "displayName": "Sub Path Expr",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-               "name": "optional",
++           "name": "subPathExpr",
+            "required": false,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-               "type": "Boolean",
++           "type": "String",
+            "url": null,
+          },
+-           ],
++         t {
++           "containerRef": null,
++           "definedAttributes": Array [],
+            "description": null,
+-           "displayName": "Secret",
+-           "expanded": true,
++           "displayName": "Mount Propagation",
++           "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "secret",
+-           "required": true,
++           "name": "mountPropagation",
++           "required": false,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+-             "values": null,
++             "values": Array [
++               "None",
++               "HostToContainer",
++               "Bidirectional",
++             ],
+            },
+-           "type": "Object",
++           "type": "String",
+            "url": null,
+          },
+          t {
+            "containerRef": null,
+            "definedAttributes": Array [],
+            "description": null,
+-           "displayName": "Mount Path",
++           "displayName": "Read Only",
+            "expanded": false,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "mountPath",
+-           "required": true,
++           "name": "readOnly",
++           "required": false,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+-           "type": "String",
++           "type": "Boolean",
+            "url": null,
+          },
+        ],
+        "description": null,
+        "displayName": null,
+@@ -895,15 +895,15 @@
+        "model": "DefaultModel",
+        "parentTypes": Array [
+          "Container",
+        ],
+        "preventChildrenMovement": false,
+-       "type": "SecretMount",
++       "type": "PersistentVolumeClaimMount",
+        "url": null,
+      },
+      "drawOption": null,
+-     "id": "secret-mount",
++     "id": "pvc-mount",
+      "name": null,
+      "path": null,
+    },
+    s {
+      "__class": "Component",
+@@ -931,28 +931,28 @@
+            "type": "String",
+            "url": null,
+          },
+          "name": "mountPath",
+          "type": "String",
+-         "value": "/mnt",
++         "value": "/mnt/secret",
+        },
+        n {
+          "definition": t {
+            "containerRef": null,
+            "definedAttributes": Array [
+              t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Name",
++               "displayName": "Secret Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "ConfigMap",
++               "linkRef": "Secret",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "name",
++               "name": "secretName",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+@@ -1117,58 +1117,58 @@
+                "type": "Boolean",
+                "url": null,
+              },
+            ],
+            "description": null,
+-           "displayName": "Config Map",
++           "displayName": "Secret",
+            "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "configMap",
++           "name": "secret",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+              "values": null,
+            },
+            "type": "Object",
+            "url": null,
+          },
+-         "name": "configMap",
++         "name": "secret",
+          "type": "Object",
+          "value": Array [
+            n {
+              "definition": t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Name",
++               "displayName": "Secret Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "ConfigMap",
++               "linkRef": "Secret",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "name",
++               "name": "secretName",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+                  "values": null,
+                },
+                "type": "Link",
+                "url": null,
+              },
+-             "name": "name",
++             "name": "secretName",
+              "type": "Link",
+              "value": Array [
+-               "test-configmap",
++               "test-secret",
+              ],
+            },
+          ],
+        },
+        n {
+@@ -1231,18 +1231,18 @@
+            "definedAttributes": Array [
+              t {
+                "containerRef": null,
+                "definedAttributes": Array [],
+                "description": null,
+-               "displayName": "Name",
++               "displayName": "Secret Name",
+                "expanded": false,
+                "linkColor": "black",
+                "linkDashStyle": null,
+-               "linkRef": "ConfigMap",
++               "linkRef": "Secret",
+                "linkType": null,
+                "linkWidth": 2,
+-               "name": "name",
++               "name": "secretName",
+                "required": true,
+                "rules": Object {
+                  "max": null,
+                  "min": null,
+                  "regex": null,
+@@ -1407,18 +1407,18 @@
+                "type": "Boolean",
+                "url": null,
+              },
+            ],
+            "description": null,
+-           "displayName": "Config Map",
++           "displayName": "Secret",
+            "expanded": true,
+            "linkColor": "black",
+            "linkDashStyle": null,
+            "linkRef": Array [],
+            "linkType": null,
+            "linkWidth": 2,
+-           "name": "configMap",
++           "name": "secret",
+            "required": true,
+            "rules": Object {
+              "max": null,
+              "min": null,
+              "regex": null,
+@@ -1458,15 +1458,15 @@
+        "model": "DefaultModel",
+        "parentTypes": Array [
+          "Container",
+        ],
+        "preventChildrenMovement": false,
+-       "type": "ConfigMapMount",
++       "type": "SecretMount",
+        "url": null,
+      },
+      "drawOption": null,
+-     "id": "config-map-mount",
++     "id": "secret-mount",
+      "name": null,
+      "path": null,
+    },
+    s {
+      "__class": "Component",
+    at Object.toEqual (/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js:96:36)
+    at Promise.then.completed (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:293:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/utils.js:226:10)
+    at _callCircusTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:297:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:233:3)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:135:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at _runTestsForDescribeBlock (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:130:9)
+    at run (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/run.js:68:3)
+    at runAndTransformResultsToJestFormat (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
+    </testCase>
+    <testCase name="KubernetesParser parse should parse a valid service.yaml file and return valid components" duration="17"/>
+    <testCase name="KubernetesParser parse should parse a valid job.yaml file and return valid components" duration="8"/>
+    <testCase name="KubernetesParser parse should parse a valid cronjob.yaml file and return valid components" duration="9"/>
+    <testCase name="KubernetesParser parse should parse a valid statefulset.yaml file and return valid components" duration="6"/>
+    <testCase name="KubernetesParser parse should parse a valid pvc.yaml file and return valid components" duration="7"/>
+    <testCase name="KubernetesParser parse should parse a valid secret.yaml file and return valid components" duration="6"/>
+    <testCase name="KubernetesParser parse should parse a valid configmap.yaml file and return valid components" duration="7"/>
+    <testCase name="KubernetesParser parse should parse multiple valid YAML files and return valid components" duration="25"/>
+    <testCase name="KubernetesParser parse should correctly determine if a file is parsable based on its extension" duration="0"/>
     <testCase name="KubernetesParser parse Should set empty components on null input files" duration="1"/>
     <testCase name="KubernetesParser parse Should set empty components on no input files" duration="1"/>
     <testCase name="KubernetesParser parse should handle invalid YAML files and exclude them from parsed components" duration="2"/>
     <testCase name="KubernetesParser convertObjectAttributeToJsObject converts object attribute to JavaScript object" duration="0"/>
-    <testCase name="KubernetesParser __convertSelectorToLinkAttribute should return an array of matching component IDs" duration="6"/>
+    <testCase name="KubernetesParser __convertSelectorToLinkAttribute should return an array of matching component IDs" duration="8"/>
   </file>
 </testExecutions>

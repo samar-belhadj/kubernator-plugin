@@ -12,6 +12,8 @@ import pvcPluginData from 'tests/resources/yaml/pvc';
 import cronjobPluginData from 'tests/resources/yaml/cronjob';
 import statefulsetPluginData from 'tests/resources/yaml/statefulset';
 import jobPluginData from 'tests/resources/yaml/job';
+import depPluginData from 'tests/resources/yaml/deployment_test';
+
 
 
 
@@ -75,6 +77,23 @@ describe('KubernetesParser', () => {
      
 
      expect(pluginData.components).toEqual(deploymentPluginData.components);
+
+    });
+    it('should parse a valid deployment_test.yml file and return valid components', () => {
+      const pluginData = new KubernetesData();
+      const metadata = new KubernetesMetadata(pluginData);
+      metadata.parse();
+
+      const parser = new KubernetesParser(pluginData);
+      const file = new FileInput({
+        path: './deployment_test.yaml',
+        content: fs.readFileSync('tests/resources/yaml/deployment_test.yaml', 'utf8'),
+      });
+
+      parser.parse([file]);
+     
+
+     expect(pluginData.components).toEqual(depPluginData.components);
 
     });
 
