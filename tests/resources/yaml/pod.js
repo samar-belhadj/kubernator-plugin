@@ -27,12 +27,12 @@ const podComponent = new Component({
           definition: MetadataDef.definedAttributes.find(({ name }) => name === 'labels'), 
           value: [
             new ComponentAttribute({
-              name: 'app.kubernetes.io/name',
+              name: 'name',
               type: 'String',
               definition: MetadataDef.definedAttributes.find(
                 ({ name }) => name === 'labels',
               ).definedAttributes.find(
-                ({ name }) => name === 'app.kubernetes.io/name',
+                ({ name }) => name === 'name',
               ),
               value: 'mon-application',
             }),

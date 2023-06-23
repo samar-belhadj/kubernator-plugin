@@ -15,7 +15,7 @@ const cronJobSpecDef = cronJobDef.definedAttributes.find(({ name }) => name === 
 
 
 const jobComponent = new Component({
-  id: 'job',
+  id: 'job-test',
   path: null,
   definition: JobDef,
   attributes: [
@@ -37,7 +37,7 @@ const jobComponent = new Component({
               ).definedAttributes.find(
                 ({ name }) => name === 'app.kubernetes.io/name',
               ),
-              value: 'job',
+              value: 'job-test',
             }),
           ],
         }),  

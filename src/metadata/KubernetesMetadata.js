@@ -45,7 +45,7 @@ class KubernetesMetadata extends DefaultMetadata {
    * @returns {KubernetesComponentDefinition} Parsed component definition.
    */
   getComponentDefinition(apiVersion, component) {
-    const attributes = component.attributes || [];
+    const attributes = component.attributes ;
     let definedAttributes = attributes.map(this.getAttributeDefinition, this);
     if (apiVersion !== 'others') {
       definedAttributes = [

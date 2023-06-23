@@ -7,7 +7,7 @@ metadata:
 spec:
   jobTemplate:
     metadata:
-      name: job
+      name: job-test
       labels:
-        app.kubernetes.io/name: job
-    
+        app.kubernetes.io/name: job-test
+   

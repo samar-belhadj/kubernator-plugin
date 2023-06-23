@@ -1,4 +1,8 @@
 import KubernetesListener from 'src/parser/KubernetesListener';
+
+
+
+
 describe('Test KubernatorParser', () => {
     describe('Test functions', () => {
       describe('Test function: lidyToLetoType', () => {
@@ -12,14 +16,8 @@ describe('Test KubernatorParser', () => {
           expect(listener.lidyToLetoType('list')).toBe('Array');
           expect(listener.lidyToLetoType('something else')).toBe(null);
         });
-      });
+      }); 
       
     });
-
-    
-
-    
-    
-      
       
 });

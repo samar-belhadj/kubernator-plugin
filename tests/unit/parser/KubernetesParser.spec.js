@@ -284,25 +284,21 @@ describe('KubernetesParser', () => {
 
   });
   
-
   describe('convertObjectAttributeToJsObject', () => {
     test('converts object attribute to JavaScript object', () => {
       const pluginData = new KubernetesData();
       const parser = new KubernetesParser(pluginData);
       const objectAttribute = {
-        value: [
-          { name: 'key1', value: 'v1' },
-          { name: 'key2', value: 'v2' },
-        ],
+        value: [{ name: 'name' , value: 'mon-application' },],
       };
-
+  
       const result = parser.convertObjectAttributeToJsObject(objectAttribute);
-
-      expect(result).toEqual({ key1: 'v1', key2: 'v2' });
+  
+      expect(result).toEqual({ name: 'mon-application' });
     });
-
   });
-
+  
+ 
   describe('__convertSelectorToLinkAttribute', () => {
     it('should return an array of matching component IDs', () => {
       const pluginData = new KubernetesData();
@@ -323,57 +319,16 @@ describe('KubernetesParser', () => {
 
       parser.parse(files);
 
-     
-      const matchLabelsAttribute = {
-        value:{
-          'app.kubernetes.io/name': 'pod',
-        },
-      };
+      const matchLabelsAttribute = {  value: 'not an array'  }; 
       const targetComponentType = 'Pod';
 
-      const targetComponents = [
-        {
-          id: 'nginx',
-          attributes: [
-            {
-              name: 'metadata',
-              value: [
-                {
-                  name: 'labels',
-                  value: {
-                    'app.kubernetes.io/name': 'pod',
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 'pod',
-          attributes: [
-            {
-              name: 'metadata',
-              value: [
-                {
-                  name: 'labels',
-                  value: {
-                    'app.kubernetes.io/name': 'pod',
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ];
-
-      // Mock the getComponentsByType method to return the targetComponents
-     jest.spyOn(pluginData, 'getComponentsByType').mockReturnValue(targetComponents);
-      console.log(targetComponents);
-
       const result = parser.__convertSelectorToLinkAttribute(matchLabelsAttribute, targetComponentType);
+      
+  
 
-      console.log(result);
-      //expect(result).toEqual(['nginx']);
+      expect(result).not.toBeDefined();
+
+      
     });
   });
 

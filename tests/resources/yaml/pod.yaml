@@ -4,6 +4,6 @@ kind: Pod
 metadata:
   name: pod
   labels:
-    app.kubernetes.io/name: mon-application
+    name: mon-application
 spec:
   containers: []

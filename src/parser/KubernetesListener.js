@@ -109,7 +109,7 @@ class KubernetesListener {
   }
 
   createVolumeMountComponentsFromTree(containerNode, podSpecNode) {
-    const volumeNodes = podSpecNode.value.volumes?.value || [];
+    const volumeNodes = podSpecNode.value.volumes?.value ;
     const volumeComponents = [];
     containerNode.value.volumeMounts?.value.forEach((volumeMountNode) => {
       const volumeName = volumeMountNode.value.name.value;
@@ -166,6 +166,8 @@ class KubernetesListener {
     }
     delete cronJobSpecNode.value.jobTemplate; // prevent exit_root from visiting this node again
   }
+
+
 
   exit_jobSpec(jobSpecNode) {
     this.exit_deploymentSpec(jobSpecNode);
@@ -244,11 +246,11 @@ class KubernetesListener {
    *
    * @param {Number} value - the `uint16` value to check.
    */
-  exit_uint16({ value }) {
+ /* exit_uint16({ value }) {
     if (value < 0 || value >= 2**16) {
       // TODO: throw error
     }
-  }
+  }*/
 }
 
 export default KubernetesListener;
