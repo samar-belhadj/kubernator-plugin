@@ -4,39 +4,39 @@
     <testCase name="Test class: KubernetesComponentDefinition Test constructor Check variable instantiation without any parameters in constructor" duration="5"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesListener.spec.js">
-    <testCase name="Test KubernatorParser Test functions Test function: lidyToLetoType Should return true on .yaml file" duration="5"/>
+    <testCase name="Test KubernatorParser Test functions Test function: lidyToLetoType Should return true on .yaml file" duration="6"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesData.spec.js">
-    <testCase name="KubernetesData addComponent should add a new component and return the generated ID" duration="6"/>
-    <testCase name="KubernetesData __createAttribute should create a new component attribute" duration="2"/>
-    <testCase name="KubernetesData __createAttribute should return null for non-existent attribute definition" duration="1"/>
+    <testCase name="KubernetesData addComponent should add a new component and return the generated ID" duration="5"/>
+    <testCase name="KubernetesData __createAttribute should create a new component attribute" duration="1"/>
+    <testCase name="KubernetesData __createAttribute should return null for non-existent attribute definition" duration="0"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/index.spec.js">
-    <testCase name="Test index of project Index should return KubernetesPlugin" duration="8"/>
+    <testCase name="Test index of project Index should return KubernetesPlugin" duration="6"/>
     <testCase name="Test index of project Index should return all needed objects" duration="2"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/models/KubernetesPlugin.spec.js">
-    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="6"/>
+    <testCase name="Test class: KubernetesPlugin Test constructor Check variable initialization" duration="7"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/render/KubernetesRenderer.spec.js">
-    <testCase name="KubernetesRenderer should render deployment files correctly" duration="31"/>
+    <testCase name="KubernetesRenderer should render deployment files correctly" duration="45"/>
     <testCase name="KubernetesRenderer should render service files correctly" duration="3"/>
     <testCase name="KubernetesRenderer should render pod files correctly" duration="2"/>
-    <testCase name="KubernetesRenderer should render cronJob files correctly" duration="16"/>
-    <testCase name="KubernetesRenderer should render configMap files correctly" duration="3"/>
-    <testCase name="KubernetesRenderer should render pvc files correctly" duration="2"/>
-    <testCase name="KubernetesRenderer should render secret files correctly" duration="3"/>
-    <testCase name="KubernetesRenderer should format a deployment kubernetes component correctly" duration="1"/>
-    <testCase name="KubernetesRenderer should format a pod kubernetes component correctly" duration="1"/>
+    <testCase name="KubernetesRenderer should render cronJob files correctly" duration="3"/>
+    <testCase name="KubernetesRenderer should render configMap files correctly" duration="2"/>
+    <testCase name="KubernetesRenderer should render pvc files correctly" duration="1"/>
+    <testCase name="KubernetesRenderer should render secret files correctly" duration="2"/>
+    <testCase name="KubernetesRenderer should format a deployment kubernetes component correctly" duration="0"/>
+    <testCase name="KubernetesRenderer should format a pod kubernetes component correctly" duration="0"/>
     <testCase name="KubernetesRenderer should format a service kubernetes component correctly" duration="0"/>
   </file>
   <file path="/home/samar/Desktop/Ditrit/kubernator-plugin/tests/unit/parser/KubernetesParser.spec.js">
-    <testCase name="KubernetesParser isParsable should return true for a YAML file" duration="2"/>
-    <testCase name="KubernetesParser isParsable should return true for a YML file" duration="1"/>
+    <testCase name="KubernetesParser isParsable should return true for a YAML file" duration="4"/>
+    <testCase name="KubernetesParser isParsable should return true for a YML file" duration="0"/>
     <testCase name="KubernetesParser isParsable should return false for a non-YAML file" duration="1"/>
-    <testCase name="KubernetesParser parse should parse a valid ingress.yaml file and return valid components" duration="59"/>
-    <testCase name="KubernetesParser parse should parse a valid deployment.yml file and return valid components" duration="40"/>
-    <testCase name="KubernetesParser parse should parse a valid deployment_test.yml file and return valid components" duration="207">
+    <testCase name="KubernetesParser parse should parse a valid ingress.yaml file and return valid components" duration="86"/>
+    <testCase name="KubernetesParser parse should parse a valid deployment.yml file and return valid components" duration="68"/>
+    <testCase name="KubernetesParser parse should parse a valid deployment_test.yml file and return valid components" duration="264">
       <failure message="Error: expect(received).toEqual(expected) // deep equality"><![CDATA[Error: expect(received).toEqual(expected) // deep equality
 
 - Expected  - 254
@@ -1182,19 +1182,19 @@
     at runTest (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/runTest.js:444:34)
     at Object.worker (/home/samar/Desktop/Ditrit/kubernator-plugin/node_modules/jest-runner/build/testWorker.js:106:12)]]></failure>
     </testCase>
-    <testCase name="KubernetesParser parse should parse a valid service.yaml file and return valid components" duration="17"/>
-    <testCase name="KubernetesParser parse should parse a valid job.yaml file and return valid components" duration="8"/>
-    <testCase name="KubernetesParser parse should parse a valid cronjob.yaml file and return valid components" duration="9"/>
-    <testCase name="KubernetesParser parse should parse a valid statefulset.yaml file and return valid components" duration="6"/>
-    <testCase name="KubernetesParser parse should parse a valid pvc.yaml file and return valid components" duration="7"/>
-    <testCase name="KubernetesParser parse should parse a valid secret.yaml file and return valid components" duration="6"/>
-    <testCase name="KubernetesParser parse should parse a valid configmap.yaml file and return valid components" duration="7"/>
-    <testCase name="KubernetesParser parse should parse multiple valid YAML files and return valid components" duration="25"/>
+    <testCase name="KubernetesParser parse should parse a valid service.yaml file and return valid components" duration="18"/>
+    <testCase name="KubernetesParser parse should parse a valid job.yaml file and return valid components" duration="12"/>
+    <testCase name="KubernetesParser parse should parse a valid cronjob.yaml file and return valid components" duration="11"/>
+    <testCase name="KubernetesParser parse should parse a valid statefulset.yaml file and return valid components" duration="7"/>
+    <testCase name="KubernetesParser parse should parse a valid pvc.yaml file and return valid components" duration="15"/>
+    <testCase name="KubernetesParser parse should parse a valid secret.yaml file and return valid components" duration="12"/>
+    <testCase name="KubernetesParser parse should parse a valid configmap.yaml file and return valid components" duration="11"/>
+    <testCase name="KubernetesParser parse should parse multiple valid YAML files and return valid components" duration="21"/>
     <testCase name="KubernetesParser parse should correctly determine if a file is parsable based on its extension" duration="0"/>
     <testCase name="KubernetesParser parse Should set empty components on null input files" duration="1"/>
     <testCase name="KubernetesParser parse Should set empty components on no input files" duration="1"/>
     <testCase name="KubernetesParser parse should handle invalid YAML files and exclude them from parsed components" duration="2"/>
     <testCase name="KubernetesParser convertObjectAttributeToJsObject converts object attribute to JavaScript object" duration="0"/>
-    <testCase name="KubernetesParser __convertSelectorToLinkAttribute should return an array of matching component IDs" duration="8"/>
+    <testCase name="KubernetesParser __convertSelectorToLinkAttribute should return an array of matching component IDs" duration="12"/>
   </file>
 </testExecutions>

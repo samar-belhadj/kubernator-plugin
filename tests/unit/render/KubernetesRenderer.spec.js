@@ -165,6 +165,40 @@ describe('KubernetesRenderer', () => {
     //     ]
     //   });
     //   // Add more assertions as needed
+   /* describe('__formatSelectorLinkAttribute', () => {
+      it('should return an array of matching component IDs', () => {
+        const pluginData = new KubernetesData();
+        const metadata = new KubernetesMetadata(pluginData);
+        metadata.parse();
+  
+        const parser = new KubernetesParser(pluginData);
+        const files = [
+          new FileInput({
+            path: './pod.yaml',
+            content: fs.readFileSync('tests/resources/yaml/pod.yaml', 'utf8'),
+          }),
+          new FileInput({
+            path: './service.yaml',
+            content: fs.readFileSync('tests/resources/yaml/service.yaml', 'utf8'),
+          }),
+        ];
+  
+        parser.parse(files);
+  
+        const matchLabelsAttribute = {  value: 'not an array'  }; 
+        const targetComponentType = 'Pod';
+  
+        const result = parser.__convertSelectorToLinkAttribute(matchLabelsAttribute, targetComponentType);
+        
+    
+  
+        expect(result).not.toBeDefined();
+  
+        
+      });
+    });*/
+  
+  
  
     });
   
