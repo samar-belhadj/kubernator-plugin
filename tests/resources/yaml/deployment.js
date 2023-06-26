@@ -6,6 +6,11 @@ const pluginData = new KubernetesData();
 const metadata = new KubernetesMetadata(pluginData);
 metadata.parse();
 
+const secretmountDef = pluginData.definitions.components.find(({ type }) => type === 'SecretMount');
+
+const pvcmountDef = pluginData.definitions.components.find(({ type }) => type === 'PersistentVolumeClaimMount');
+
+
 const cmmountDef = pluginData.definitions.components.find(({ type }) => type === 'ConfigMapMount');
 
 const containerDef = pluginData.definitions.components.find(({ type }) => type === 'Container');
@@ -18,6 +23,8 @@ const podSpecDef = podDef.definedAttributes.find(({ name }) => name === 'spec');
 const deploymentDef = pluginData.definitions.components.find(({ type }) => type === 'Deployment');
 const MetadataDef = deploymentDef.definedAttributes.find(({ name }) => name === 'metadata');
 const deploymentSpecDef = deploymentDef.definedAttributes.find(({ name }) => name === 'spec');
+
+
 
 const cmmountComponent = new Component({
   id: 'config-map-mount',
@@ -60,6 +67,93 @@ const cmmountComponent = new Component({
     
   ],
 });
+
+
+const secretmountComponent = new Component({
+  id: 'secret-mount',
+  path: null,
+  definition: secretmountDef,
+  attributes: [
+    new ComponentAttribute({
+      name: 'mountPath',
+      type: 'String',
+      definition: secretmountDef.definedAttributes.find(({ name }) => name === 'mountPath'), 
+      value : '/mnt/secret',
+    }),
+
+    new ComponentAttribute({
+      name: 'secret',
+      type: 'Object',
+      definition: secretmountDef.definedAttributes.find(({ name }) => name === 'secret'), 
+      value : [
+        new ComponentAttribute({
+          name: 'secretName',
+          type: 'Link',
+          path: null,
+          definition: secretmountDef.definedAttributes.find(
+            ({ name }) => name === 'secret',
+          ).definedAttributes.find(
+            ({ name }) => name === 'secretName',
+          ),  
+          value :[ "test-secret" ],
+        }),
+
+      ],
+    }),
+    
+    new ComponentAttribute({
+      name: 'parent',
+      type: 'String',
+      definition: secretmountDef.definedAttributes.find(({ name }) => name === 'parent'), 
+      value : 'nginx-container',
+    }),
+    
+  ],
+});
+
+const pvcmountComponent = new Component({
+  id: 'pvc-mount',
+  path: null,
+  definition: pvcmountDef,
+  attributes: [
+    new ComponentAttribute({
+      name: 'mountPath',
+      type: 'String',
+      definition: pvcmountDef.definedAttributes.find(({ name }) => name === 'mountPath'), 
+      value : '/mnt/pvc',
+    }),
+
+    new ComponentAttribute({
+      name: 'persistentVolumeClaim',
+      type: 'Object',
+      definition: pvcmountDef.definedAttributes.find(({ name }) => name === 'persistentVolumeClaim'), 
+      value : [
+        new ComponentAttribute({
+          name: 'claimName',
+          type: 'Link',
+          path: null,
+          definition: pvcmountDef.definedAttributes.find(
+            ({ name }) => name === 'persistentVolumeClaim',
+          ).definedAttributes.find(
+            ({ name }) => name === 'claimName',
+          ),  
+          value :[ "task-pv-volume" ],
+        }),
+
+      ],
+    }),
+    
+    new ComponentAttribute({
+      name: 'parent',
+      type: 'String',
+      definition: pvcmountDef.definedAttributes.find(({ name }) => name === 'parent'), 
+      value : 'nginx-container',
+    }),
+    
+  ],
+});
+
+
 
 const containerComponent = new Component({
   id: 'nginx-container',
@@ -177,8 +271,11 @@ const deploymentComponent = new Component({
 });
 
 pluginData.components.push(cmmountComponent);
+pluginData.components.push(pvcmountComponent);
+pluginData.components.push(secretmountComponent);
 pluginData.components.push(containerComponent);
 pluginData.components.push(podComponent);
 pluginData.components.push(deploymentComponent);
+
 
 export default pluginData;

@@ -20,7 +20,17 @@ spec:
           volumeMounts:
             - name: config-map-mount
               mountPath: /mnt
+            - name: pvc-mount
+              mountPath: /mnt/pvc
+            - name: secret-mount
+              mountPath: /mnt/secret
       volumes:
         - name: config-map-mount
           configMap:
             name: test-configmap
+        - name: pvc-mount
+          persistentVolumeClaim:
+            claimName: task-pv-volume
+        - name: secret-mount
+          secret:
+            secretName: test-secret

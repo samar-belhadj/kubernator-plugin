@@ -270,9 +270,9 @@ const deploymentComponent = new Component({
     ],
 });
 
+pluginData.components.push(cmmountComponent);
 pluginData.components.push(pvcmountComponent);
 pluginData.components.push(secretmountComponent);
-pluginData.components.push(cmmountComponent);
 pluginData.components.push(containerComponent);
 pluginData.components.push(podComponent);
 pluginData.components.push(deploymentComponent);
