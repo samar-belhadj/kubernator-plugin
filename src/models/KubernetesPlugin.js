@@ -1,11 +1,11 @@
 import { DefaultPlugin } from 'leto-modelizer-plugin-core';
-import KubernetesData from './KubernetesData';
-import KubernetesDrawer from '../draw/KubernetesDrawer';
-import KubernetesMetadata from '../metadata/KubernetesMetadata';
-import KubernetesParser from '../parser/KubernetesParser';
-import KubernetesRenderer from '../render/KubernetesRenderer';
-import KubernetesConfiguration from './KubernetesConfiguration';
-import packageInfo from '../../package.json';
+import KubernetesData from 'src/models/KubernetesData';
+import KubernetesDrawer from 'src/draw/KubernetesDrawer';
+import KubernetesMetadata from 'src/metadata/KubernetesMetadata';
+import KubernetesParser from 'src/parser/KubernetesParser';
+import KubernetesRenderer from 'src/render/KubernetesRenderer';
+import KubernetesConfiguration from 'src/models/KubernetesConfiguration';
+import packageInfo from 'package.json';
 
 /**
  * Kubernetes plugin.
@@ -13,7 +13,6 @@ import packageInfo from '../../package.json';
 class KubernetesPlugin extends DefaultPlugin {
   /**
    * Default constructor.
-   *
    * @param {object} [props] - Object that contains all properties to set.
    * @param {object} [props.event] - Event manager.
    * @param {Function} [props.event.next] - Function to emit event.
@@ -21,7 +20,7 @@ class KubernetesPlugin extends DefaultPlugin {
   constructor(props = {
     event: null,
   }) {
-    const configuration = new KubernetesConfiguration();
+    const configuration = new KubernetesConfiguration({});
     const pluginData = new KubernetesData(configuration, {
       name: packageInfo.name,
       version: packageInfo.version,

@@ -1,6 +1,6 @@
 import { DefaultParser } from 'leto-modelizer-plugin-core';
-import { parse as lidyParse } from '../lidy/k8s';
-import KubernetesListener from './KubernetesListener';
+import { parse as lidyParse } from 'src/lidy/k8s';
+import KubernetesListener from 'src/parser/KubernetesListener';
 
 /**
  *  Class to parse and retrieve components from Kubernetes files.
@@ -8,39 +8,39 @@ import KubernetesListener from './KubernetesListener';
 class KubernetesParser extends DefaultParser {
   /**
    * Indicate if this parser can parse this file.
-   *determines if a file is parsable by checking either 
+   *determines if a file is parsable by checking either
    its content for specific keywords or its path for a ".yml" or ".yaml" extension
    * @param {FileInformation} [fileInformation] - File information.
    * @returns {boolean} Boolean that indicates if this file can be parsed or not.
    */
 
-    isParsable(fileInformation) {
-     if (!fileInformation.content) {
-       return /\.ya?ml$/.test(fileInformation.path);
-     }
-     const keywords = ['apiVersion','kind','metadata'];
-     return keywords.some(keyword => fileInformation.content.includes(keyword)); 
+  isParsable(fileInformation) {
+    if (!fileInformation.content) {
+      return /\.ya?ml$/.test(fileInformation.path);
     }
-    /**
-     * from the parsable files ,it extracts unique "models" (folder paths) and returns them as an array
-     * @param {files} 
-     * @returns {array} return an array of models 
-     */
-    getModels(files = []) {
-      return files.filter((file) => this.isParsable(file))
-        .reduce((acc, { path }) => {
-          const model = path.split('/').slice(0, -1).join('/');
-          if (!acc.includes(model)) {
-            acc.push(model);
-          }
-          return acc;
-        }, []);
-    }
+    const keywords = ['apiVersion', 'kind', 'metadata'];
+    return keywords.some((keyword) => fileInformation.content.includes(keyword));
+  }
 
+  /**
+   * from the parsable files,it extracts unique "models" (folder paths) and returns them as an array
+   * @param {files}
+   * @param files
+   * @returns {Array} return an array of models
+   */
+  getModels(files = []) {
+    return files.filter((file) => this.isParsable(file))
+      .reduce((acc, { path }) => {
+        const model = path.split('/').slice(0, -1).join('/');
+        if (!acc.includes(model)) {
+          acc.push(model);
+        }
+        return acc;
+      }, []);
+  }
 
   /**
    * Convert the content of files into Components.
-   *
    * @param {FileInformation} diagram - Diagram file information.
    * @param {FileInput[]} [inputs] - Data you want to parse.
    * @param {string} [parentEventId] - Parent event id.
@@ -93,26 +93,19 @@ class KubernetesParser extends DefaultParser {
           listener,
           path: input.path,
           prog: {
-            errors: errors,
-            warnings: warnings,
-            imports: imports,
-            alreadyImported: alreadyImported,
-            root: root,
+            errors,
+            warnings,
+            imports,
+            alreadyImported,
+            root,
           },
         });
-
-        console.log(errors);
-        console.log(warnings);
-        console.log(imports);
-        console.log(alreadyImported);
-        console.log(root);
 
         this.pluginData.components.push(...listener.components);
         this.pluginData.emitEvent({ id, status: 'success' });
       });
 
     this.convertSelectorAttributesToLinks();
-    console.log('P', this.pluginData.components);
   }
 
   convertSelectorAttributesToLinks() {
@@ -136,31 +129,28 @@ class KubernetesParser extends DefaultParser {
 
   __convertSelectorToLinkAttribute(matchLabelsAttribute, targetComponentType) {
     // TODO: support "matchExpressions" selectors
-    matchLabelsAttribute.value =
-      this.pluginData.getComponentsByType(targetComponentType).filter(
-        ({attributes}) => {
-          const targetLabelsAttribute = attributes.find(
-            ({name}) => name === 'metadata'
-          )?.value?.find(
-            ({name}) => name === 'labels'
-          );
-          if (!targetLabelsAttribute) {
-            return false;
-          }
-          const selectorLabels =
-            this.convertObjectAttributeToJsObject(matchLabelsAttribute);
-          const targetLabels =
-            this.convertObjectAttributeToJsObject(targetLabelsAttribute);
-          const selectorLabelsKeys = Object.keys(selectorLabels);
-          return selectorLabelsKeys.length && selectorLabelsKeys.every(
-            (key) => selectorLabels[key] === targetLabels[key]
-          );
+    matchLabelsAttribute.value = this.pluginData.getComponentsByType(targetComponentType).filter(
+      ({ attributes }) => {
+        const targetLabelsAttribute = attributes.find(
+          ({ name }) => name === 'metadata',
+        )?.value?.find(
+          ({ name }) => name === 'labels',
+        );
+        if (!targetLabelsAttribute) {
+          return false;
         }
-      ).map(({id}) => id);
+        const selectorLabels = this.convertObjectAttributeToJsObject(matchLabelsAttribute);
+        const targetLabels = this.convertObjectAttributeToJsObject(targetLabelsAttribute);
+        const selectorLabelsKeys = Object.keys(selectorLabels);
+        return selectorLabelsKeys.length && selectorLabelsKeys.every(
+          (key) => selectorLabels[key] === targetLabels[key],
+        );
+      },
+    ).map(({ id }) => id);
   }
 
   convertObjectAttributeToJsObject(objectAttribute) {
-    return objectAttribute.value.reduce((acc, {name, value}) => {
+    return objectAttribute.value.reduce((acc, { name, value }) => {
       acc[name] = value;
       return acc;
     }, {});

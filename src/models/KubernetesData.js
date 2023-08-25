@@ -10,9 +10,8 @@ import {
 class KubernetesData extends DefaultData {
   /**
    * Create new component.
-   *
    * @param {ComponentDefinition} definition - Component definition.
-   * @param {string} [folder=''] - Folder path.
+   * @param {string} [folder] - Folder path.
    * @param {string} [fileName] - File name.
    * @returns {string} Component id.
    */
@@ -38,7 +37,7 @@ class KubernetesData extends DefaultData {
 
   __createAttribute(name, value, parentDefinition) {
     const definition = parentDefinition.definedAttributes.find(
-      (attributeDefinition) => attributeDefinition.name === name
+      (attributeDefinition) => attributeDefinition.name === name,
     );
     const attribute = new ComponentAttribute({
       name,

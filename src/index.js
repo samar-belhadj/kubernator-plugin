@@ -1,3 +1,3 @@
-import KubernetesPlugin from './models/KubernetesPlugin';
+import KubernetesPlugin from 'src/models/KubernetesPlugin';
 
 export default KubernetesPlugin;

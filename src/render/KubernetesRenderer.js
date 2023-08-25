@@ -2,7 +2,7 @@ import {
   DefaultRender,
   FileInput,
 } from 'leto-modelizer-plugin-core';
-import yaml from 'js-yaml'
+import yaml from 'js-yaml';
 
 /**
  * Class to render Kubernetes files from components.
@@ -10,14 +10,12 @@ import yaml from 'js-yaml'
 class KubernetesRenderer extends DefaultRender {
   /**
    * Convert all provided components and links to Kubernetes files.
-   *
    * @param {string} [parentEventId] - Parent event id.
    * @returns {FileInput[]} Array of generated files from components and links.
    */
   renderFiles(parentEventId = null) {
-    console.log('R', this.pluginData.components);
     return this.pluginData.components.filter(
-      (component) => !component.getContainerId()
+      (component) => !component.getContainerId(),
     ).map((component) => {
       const id = this.pluginData.emitEvent({
         parent: parentEventId,
@@ -43,12 +41,8 @@ class KubernetesRenderer extends DefaultRender {
     formatted = this.insertComponentName(formatted, component);
 
     if (!isSubComponent) {
-      formatted = this.insertFront(
-        formatted, 'kind', component.definition.type
-      );
-      formatted = this.insertFront(
-        formatted, 'apiVersion', component.definition.apiVersion
-      );
+      formatted = this.insertFront(formatted, 'kind', component.definition.type);
+      formatted = this.insertFront(formatted, 'apiVersion', component.definition.apiVersion);
     }
     this.insertChildComponentsAttributes(formatted, component);
     this.insertDefaultValues(formatted, component);
@@ -64,10 +58,10 @@ class KubernetesRenderer extends DefaultRender {
         acc[attribute.name] = Object.values(this.formatAttributes(attribute.value, component));
       } else if (attribute.type === 'Link') {
         if (attribute.name === 'selector') {
-          acc[attribute.name] =
-            this.formatSelectorLinkAttribute(attribute, component);
+          acc[attribute.name] = this.formatSelectorLinkAttribute(attribute, component);
         } else {
-          acc[attribute.name] = attribute.value[0]; // Link attributes are arrays, but we don't want the rendered value to be an array
+          // Link attributes are arrays, but we don't want the rendered value to be an array
+          acc[attribute.name] = attribute.value[0];
         }
       } else if (attribute.definition?.type === 'Reference') {
         // Drop attribute in rendered file
@@ -99,23 +93,19 @@ class KubernetesRenderer extends DefaultRender {
       throw new Error(`Target component not found '${targetComponentId}'.`);
     }
     const targetLabelsAttribute = targetComponent.attributes.find(
-      ({name}) => name === 'metadata'
+      ({ name }) => name === 'metadata',
     )?.value?.find(
-      ({name}) => name === 'labels'
+      ({ name }) => name === 'labels',
     )?.value;
     if (!targetLabelsAttribute?.length) {
-      return {'app.kubernetes.io/name': targetComponent.id};
+      return { 'app.kubernetes.io/name': targetComponent.id };
     }
     return this.formatAttributes(targetLabelsAttribute, targetComponent);
   }
 
   insertComponentName(formatted, component) {
     if (component.definition.apiVersion !== 'others') {
-      formatted = this.insertFront(
-        formatted, 'metadata', this.insertFront(
-          formatted.metadata || {}, 'name', component.id,
-        )
-      );
+      formatted = this.insertFront(formatted, 'metadata', this.insertFront(formatted.metadata || {}, 'name', component.id));
     } else {
       formatted = this.insertFront(formatted, 'name', component.id);
     }
@@ -127,7 +117,7 @@ class KubernetesRenderer extends DefaultRender {
     return {
       [key]: value,
       ...object,
-    }
+    };
   }
 
   insertChildComponentsAttributes(formatted, component) {
@@ -153,12 +143,13 @@ class KubernetesRenderer extends DefaultRender {
         const volumeComponents = childComponents;
         formatted.volumeMounts = volumeComponents.map((volumeComponent) => {
           const formattedVolumeMount = this.formatComponent(volumeComponent, true);
-          // Split volumes and volumeMounts attributes : volumeMounts should contain name, other non-object attributes (mountPath, propagation, ...)
+          // Split volumes and volumeMounts attributes :
+          // volumeMounts should contain name,other non-object attributes(mountPath,propagation,...)
           Object.keys(formattedVolumeMount).forEach((key) => {
             if (typeof formattedVolumeMount[key] === 'object') {
               delete formattedVolumeMount[key];
             }
-          })
+          });
           return formattedVolumeMount;
         });
         break;
@@ -175,42 +166,42 @@ class KubernetesRenderer extends DefaultRender {
     if (component.definition.apiVersion !== 'others') {
       // Set at least one label to be able to use Link selectors.
       formatted.metadata.labels ||= {
-        'app.kubernetes.io/name': component.id
+        'app.kubernetes.io/name': component.id,
       };
     }
     switch (component.definition.type) {
-      case "Deployment":
-      case "StatefulSet":
-      case "Job":
+      case 'Deployment':
+      case 'StatefulSet':
+      case 'Job':
         formatted.spec ||= {};
         const template = formatted.spec.template || {};
         delete formatted.spec.template; // delete to reorder
         formatted.spec.selector ||= {};
-        formatted.spec.selector.matchLabels = {...template.metadata?.labels} || {};
+        formatted.spec.selector.matchLabels = { ...template.metadata?.labels } || {};
         formatted.spec.template ||= template;
         break;
-      case "Pod":
+      case 'Pod':
         formatted.spec ||= {};
         formatted.spec.containers ||= [];
         break;
-      case "ConfigMapMount":
+      case 'ConfigMapMount':
         formatted.configMap ||= {};
         formatted.mountPath ||= '';
         break;
-      case "SecretMount":
+      case 'SecretMount':
         formatted.secret ||= {};
         formatted.mountPath ||= '';
         break;
-      case "PersistentVolumeClaimMount":
+      case 'PersistentVolumeClaimMount':
         formatted.persistentVolumeClaim ||= {};
         formatted.persistentVolumeClaim.claimName ||= '';
         formatted.mountPath ||= '';
         break;
-      case "Service":
+      case 'Service':
         formatted.spec ||= {};
         formatted.spec.ports ||= [];
         break;
-      case "CronJob":
+      case 'CronJob':
         formatted.spec ||= {};
         formatted.spec.jobTemplate ||= {};
         break;
@@ -223,34 +214,32 @@ class KubernetesRenderer extends DefaultRender {
     ['initContainers', 'containers'].forEach((k8sContainerAttributeName) => {
       const k8sContainerComponents = childComponents.filter(
         (k8sContainerComponent) => {
-          const isInitContainer =
-            k8sContainerComponent.getAttributeByName('isInitContainer').value;
+          const isInitContainer = k8sContainerComponent.getAttributeByName('isInitContainer').value;
           return k8sContainerComponent.definition.type === 'Container'
-            && isInitContainer === (k8sContainerAttributeName === 'initContainers')
-        }
+            && isInitContainer === (k8sContainerAttributeName === 'initContainers');
+        },
       );
       if (k8sContainerComponents.length) {
         formatted.spec[k8sContainerAttributeName] = k8sContainerComponents.map(
           (k8sContainerComponent) => {
             const formattedContainer = this.formatComponent(k8sContainerComponent, true);
             delete formattedContainer.isInitContainer;
-            const volumeComponents =
-              this.pluginData.getChildren(k8sContainerComponent.id);
+            const volumeComponents = this.pluginData.getChildren(k8sContainerComponent.id);
             volumes.push(...volumeComponents.map(
               (volumeComponent) => {
-                const formattedVolume =
-                  this.formatComponent(volumeComponent, true);
-                // Split volumes and volumeMounts attributes : volumes should only contain name and an object (configMap, secret, ...)
+                const formattedVolume = this.formatComponent(volumeComponent, true);
+                // Split volumes and volumeMounts attributes :
+                // volumes should only contain name and an object (configMap, secret, ...)
                 Object.keys(formattedVolume).forEach((key) => {
                   if (typeof formattedVolume[key] !== 'object' && key !== 'name') {
                     delete formattedVolume[key];
                   }
-                })
+                });
                 return formattedVolume;
-              }
+              },
             ));
             return formattedContainer;
-          }
+          },
         );
       }
     });
